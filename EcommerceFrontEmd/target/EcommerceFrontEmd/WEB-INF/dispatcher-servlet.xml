@@ -8,14 +8,15 @@ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 http://www.springframework.org/schema/context
 http://www.springframework.org/schema/context/spring-context-3.0.xsd">
  
-	<context:component-scanbase-package="com.niit.EcommerceFrontEmd.controller"/>
+	<context:component-scan base-package="com.niit.EcommerceFrontEmd.controller"/>
+	<context:component-scan base-package="com.niit.EcommerceBackend"/>
  
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<propertyname="prefix">
+		<property name="prefix">
 			<value>/WEB-INF/views/</value>
 		</property>
-		<propertyname="suffix">
+		<property name="suffix">
 			<value>.jsp</value>
 		</property>
 	</bean>
