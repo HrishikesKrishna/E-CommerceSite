@@ -18,83 +18,60 @@ import javax.persistence.Table;
 
 @Entity
 @Component
-@Table(name="Suppplier")
+@Table(name="Supplier")
 public class Supplier implements Serializable{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Id
+	
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id
 	private int id;
 
-	@Column(name="dType",nullable=false)
-	private String dType;
+	@Column(name="Suppliername",nullable=false)
+	private String supname;
 	 
-	@Column(name="title",nullable=false)
-	private String title;
+	@Column(name="Supplieraddress",nullable=false)
+	private String sadr;
 
-	@Column(name="SHORT_DESCRIPTION",nullable=false)
-	private String shortDescrption;
+		@OneToMany(targetEntity=Product.class,mappedBy="sid",fetch=FetchType.EAGER)
+	private Set<Product> product;
 
-	@Column(name="format",nullable=false)
-	private String format;
 	
-	@OneToMany(targetEntity=Product.class,mappedBy="suppier",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
-	private Set<Product> prod;
+		public int getId() {
+			return id;
+		}
+
+		public void setId(int id) {
+			this.id = id;
+		}
+
+		public String getSupname() {
+			return supname;
+		}
+
+		public void setSupname(String supname) {
+			this.supname = supname;
+		}
+
+		public String getSadr() {
+			return sadr;
+		}
+
+		public void setSadr(String sadr) {
+			this.sadr = sadr;
+		}
+
+		public Set<Product> getProduct() {
+			return product;
+		}
+
+		public void setProduct(Set<Product> product) {
+			this.product = product;
+		}
 	
-	
-	
-	public Set<Product> getProd() {
-		return prod;
-	}
-
-	public void setProd(Set<Product> prod) {
-		this.prod = prod;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getdType() {
-		return dType;
-	}
-
-	public void setdType(String dType) {
-		this.dType = dType;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-
-	public String getShortDescrption() {
-		return shortDescrption;
-	}
-
-	public void setShortDescrption(String shortDescrption) {
-		this.shortDescrption = shortDescrption;
-	}
-
-	public String getFormat() {
-		return format;
-	}
-
-	public void setFormat(String format) {
-		this.format = format;
-	}
-
 
 
 

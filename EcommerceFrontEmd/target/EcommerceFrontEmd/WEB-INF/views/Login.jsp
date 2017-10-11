@@ -7,15 +7,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>HK's Project</title>
 <body>
-<nav class="navbar navbar-inverse navbar">
-<div class="container-fluid">
-<ul class="nav navbar-nav">
-<li><a href="#">Home</a></li>
-<li><a href="#">Cart</a><li>
-
-</ul>
-</div>
-</nav>
+<jsp:include page="Header.jsp"/>
 <div class="container-fluid">
 <div class="jumbotron">
 <p><strong>Login</strong></p>

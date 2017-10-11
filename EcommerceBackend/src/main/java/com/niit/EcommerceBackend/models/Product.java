@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -30,89 +31,88 @@ public class Product implements Serializable {
 	private int id;
 	
 	
-	
-	
-	@Column(name="dType",nullable=false)
-	private String dType;
-	 
-	@Column(name="title",nullable=false)
-	private String title;
+	@Column(name="name",nullable=false)
+	private String name;
 	
 	@Column(name="SHORT_DESCRIPTION",nullable=false)
-	private String shortDescrption;
+	private String sd;
 	
-	@Column(name="format",nullable=false)
-	private String format;
-
-	
-	@ManyToOne
-	@JoinColumn(name="S_ID")
-	Supplier suppier;
+	@Column(name="price",nullable=false)
+	private int price;
 	
 	@ManyToOne
-	@JoinColumn(name="C_ID")
-	Category category;
+	@JoinColumn(name="S_ID",insertable=true,updatable=true,nullable=false)
+	private Supplier sid;
 	
+	@ManyToOne
+	@JoinColumn(name="C_ID",insertable=true,updatable=true,nullable=false)
+	private Category cid;
 	
-	public Supplier getSuppier() {
-		return suppier;
+	@Column(name="Image")
+	private String image;
+
+	
+	public String getImage() {
+		return image;
 	}
 
-
-	public void setSuppier(Supplier suppier) {
-		this.suppier = suppier;
+	public void setImage(String image) {
+		this.image = image;
 	}
-
-
-	public Category getCategory() {
-		return category;
-	}
-
-
-	public void setCategory(Category category) {
-		this.category = category;
-	}
-
 
 	public int getId() {
 		return id;
 	}
-	
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public String getdType() {
-		return dType;
+	public String getName() {
+		return name;
 	}
 
-	public void setdType(String dType) {
-		this.dType = dType;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getSd() {
+		return sd;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setSd(String sd) {
+		this.sd = sd;
 	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public 	void setPrice(int price) {
+		this.price = price;
+	}
+
+	public Supplier getSid() {
+		return sid;
+	}
+
+	public void setSid(Supplier sid) {
+		this.sid = sid;
+	}
+
+	public Category getCid() {
+		return cid;
+	}
+
+	public void setCid(Category cid) {
+		this.cid = cid;
+	}
+
+	
+		
 	
 
-	public String getShortDescrption() {
-		return shortDescrption;
-	}
 
-	public void setShortDescrption(String shortDescrption) {
-		this.shortDescrption = shortDescrption;
-	}
+	
 
-	public String getFormat() {
-		return format;
-	}
-
-	public void setFormat(String format) {
-		this.format = format;
-	}
 }

@@ -23,17 +23,17 @@ public class User implements Serializable {
 	
 	
 	
-	@Column(name="dType",nullable=false)
-	private String dType;
+	@Column(name="Username",nullable=false)
+	private String uname;
 	 
-	@Column(name="title",nullable=false)
-	private String title;
+	@Column(name="Useremail",nullable=false)
+	private String umail;
 	
-	@Column(name="SHORT_DESCRIPTION",nullable=false)
-	private String shortDescrption;
+	@Column(name="Userpass",nullable=false)
+	private String upass;
 	
-	@Column(name="format",nullable=false)
-	private String format;
+	@Column(name="Usermobile",nullable=false)
+	private long umobno;
 
 	public int getId() {
 		return id;
@@ -43,36 +43,37 @@ public class User implements Serializable {
 		this.id = id;
 	}
 
-	public String getdType() {
-		return dType;
+	public String getUname() {
+		return uname;
 	}
 
-	public void setdType(String dType) {
-		this.dType = dType;
+	public void setUname(String uname) {
+		this.uname = uname;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getUmail() {
+		return umail;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setUmail(String umail) {
+		this.umail = umail;
 	}
+
+	public String getUpass() {
+		return upass;
+	}
+
+	public void setUpass(String upass) {
+		this.upass = upass;
+	}
+
+	public long getUmobno() {
+		return umobno;
+	}
+
+	public void setUmobno(long umobno) {
+		this.umobno = umobno;
+	}
+
 	
-
-	public String getShortDescrption() {
-		return shortDescrption;
-	}
-
-	public void setShortDescrption(String shortDescrption) {
-		this.shortDescrption = shortDescrption;
-	}
-
-	public String getFormat() {
-		return format;
-	}
-
-	public void setFormat(String format) {
-		this.format = format;
-	}
 }

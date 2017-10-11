@@ -16,82 +16,53 @@ import javax.persistence.Table;
 
 @Entity
 @Component
-@Table(name="Category")
+@Table(name="CATEGORY")
 
 public class Category implements Serializable {
 /**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-@Id
-@GeneratedValue(strategy=GenerationType.IDENTITY)
-private int id;
 
-@Column(name="dType",nullable=false)
-private String dType;
- 
-@Column(name="title",nullable=false)
-private String title;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id
+	private int id;
 
-@Column(name="SHORT_DESCRIPTION",nullable=false)
-private String shortDescrption;
-
-@Column(name="format",nullable=false)
-private String format;
-
-@OneToMany(targetEntity=Product.class,mappedBy="category",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
-private Set<Product> prod;
+@Column(name="Categoryname",nullable=false)
+private String catname;
 
 
-public Set<Product> getProd() {
-	return prod;
-}
-
-public void setProd(Set<Product> prod) {
-	this.prod = prod;
-}
-
+@OneToMany(targetEntity=Product.class,mappedBy="cid",fetch=FetchType.EAGER)
+private Set<Product> product;
 
 
 public int getId() {
 	return id;
 }
 
+
 public void setId(int id) {
 	this.id = id;
 }
 
-public String getdType() {
-	return dType;
-}
 
-public void setdType(String dType) {
-	this.dType = dType;
-}
-
-public String getTitle() {
-	return title;
-}
-
-public void setTitle(String title) {
-	this.title = title;
+public String getCatname() {
+	return catname;
 }
 
 
-public String getShortDescrption() {
-	return shortDescrption;
+public void setCatname(String catname) {
+	this.catname = catname;
 }
 
-public void setShortDescrption(String shortDescrption) {
-	this.shortDescrption = shortDescrption;
+
+public Set<Product> getProduct() {
+	return product;
 }
 
-public String getFormat() {
-	return format;
-}
 
-public void setFormat(String format) {
-	this.format = format;
+public void setProduct(Set<Product> product) {
+	this.product = product;
 }
 
 
