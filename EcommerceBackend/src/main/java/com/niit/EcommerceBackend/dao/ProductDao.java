@@ -12,5 +12,5 @@ import com.niit.EcommerceBackend.models.Product;
 		public void deleteProduct(int id);
 		public Product getprobyid(int id);
 		public List<Product>getAllProducts();
-		
+		public List<Product>getProbycatid(int id);
 }

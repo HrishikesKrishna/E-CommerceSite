@@ -79,6 +79,18 @@ public void updateProduct(Product p) {
 	ssn.close();
 }
 
+public List<Product> getProbycatid(int cid) {
+	Session ssn=sessionFactory.openSession();
+	Transaction t=ssn.getTransaction();
+	t.begin();
+	org.hibernate.Query q=ssn.createQuery("from Product where C_ID="+cid);/*Product is name of Model class,C_ID name of column in Product Table*/
+	List<Product> p=(List<Product>)q.list();
+	t.commit();
+	ssn.close();
+	return p;
+	
+}
+
 
 
 }

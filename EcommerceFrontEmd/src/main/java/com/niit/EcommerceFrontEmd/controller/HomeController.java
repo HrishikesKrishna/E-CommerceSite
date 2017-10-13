@@ -27,7 +27,7 @@ import com.niit.EcommerceBackend.models.User;
 	 
 	@SuppressWarnings("unused")
 	@Controller
-	public class HelloWorldcontroller{
+	public class HomeController{
 		
 		@Autowired
 		UserDao udao;
@@ -43,6 +43,17 @@ import com.niit.EcommerceBackend.models.User;
 		
 		String message ="Welcome to Spring MVC!";
 	 
+		@RequestMapping("/")
+		public ModelAndView Home()
+				{
+					ModelAndView mv=new ModelAndView("index");
+					List<Category> cd=(List<Category>)cdao.getAllCategories();
+					mv.addObject("catd", cd);
+					return mv;
+					
+				}
+		
+		
 		@RequestMapping("/hello")
 		public ModelAndView showMessage(@RequestParam(value ="name", required =false, defaultValue="World")String name){
 			System.out.println("in controller");
@@ -51,56 +62,32 @@ import com.niit.EcommerceBackend.models.User;
 			mv.addObject("name", name);
 			return mv;
 		}
-		@RequestMapping("/admin")
-		public ModelAndView admin()
-		{
-			ModelAndView mv=new ModelAndView("Admin");
-			List<Category> cc=cdao.getAllCategories();
-			List<Supplier> ss=sdao.getAllSupplier();
-			/*System.out.println("product category");*/
-			System.out.println("CATEGORIes......"+cc);
-			System.out.println("Suppliers......."+ss);
-			mv.addObject("cat",cc);
-			mv.addObject("sup",ss);
-			
-			return mv;
-	}
-		@RequestMapping("/")
-		public String Home()
-				{
-					return "index";
-					
-				}
+		
 		@RequestMapping("/index")
 		public String index()
 		{
 			return "index";
 		}
-		@RequestMapping("/Cart")
+		@RequestMapping("/cart")
 		public String Cart()
 		{
 			return"Cart";
 		}
-		@RequestMapping("/Login")
-		public String Login()
+		@RequestMapping("/login")
+		public ModelAndView Login()
 		{
-			return "Login";
+			ModelAndView mv=new ModelAndView("Login");
+			List<Category> cd=(List<Category>)cdao.getAllCategories();
+			mv.addObject("catd", cd);
+			return mv;
 		}
-		@RequestMapping("/ur")
-		public ModelAndView ur(@RequestParam("name") String uname,@RequestParam("email")String umail,@RequestParam("pwd")String upass,@RequestParam("no")long umobno)
+		@RequestMapping("/signup")
+		public ModelAndView sgup()
 		{
-			System.out.println("in controller");
-			System.out.println(uname+umail+upass+umobno);
-			User p=new User();
-			
-			p.setUname(uname);
-			p.setUmail(umail);
-			p.setUmobno(umobno);
-			p.setUpass(upass);
-			udao.saveUser(p);
-			
-			ModelAndView mv1=new ModelAndView("signup");
-			return mv1;
+			ModelAndView mv=new ModelAndView("Signup");
+			List<Category> cd=(List<Category>)cdao.getAllCategories();
+			mv.addObject("catd", cd);
+			return mv;
 		}
 		
 		

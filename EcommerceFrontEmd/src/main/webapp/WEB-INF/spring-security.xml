@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd 
+		http://www.springframework.org/schema/security 
+		http://www.springframework.org/schema/security/spring-security.xsd"
+		xmlns:security="http://www.springframework.org/schema/security"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans">
+
+	<!-- New Spring Security implementation -->
+	<security:http auto-config="true">
+    <security:intercept-url pattern="/admin/**"
+    access="hasRole('ROLE_ADMIN')" />
+    <security:intercept-url pattern="/login"
+     access="permitAll" />
+  <!--   <security:intercept-url pattern="/user/**"
+     access="hasRole('ROLE USER')" /> -->
+		<security:form-login 
+		    login-processing-url="/j_spring_security_check" <!-- give as action of login -->
+			password-parameter="j_password"
+			 username-parameter="j_username"
+			 authentication-failure-url="/error" 
+			default-target-url="/"
+			login-page="/login" />
+			
+
+		<security:logout
+		     logout-url="/j_spring_security_logout" <!-- give as action of logout -->
+			logout-success-url="/" />
+            <security:access-denied-handler
+                     error-page="/error" />
+		<!-- enable csrf protection -->
+		<security:csrf disabled="true" />
+	</security:http>
+
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:jdbc-user-service
+				data-source-ref="datasource"
+				users-by-username-query="SELECT email, password, 'true' as enabled FROM User WHERE email = ?"
+				authorities-by-username-query="SELECT email, role From User WHERE email = ?" />
+		</security:authentication-provider>
+	</security:authentication-manager>
+</beans>
+
+login.jsp
+----------------
+<form action="j_spring_security_check"" method="post">
+  <div class="form-group">
+    <label for="email">Email address:</label> 
+    <input type="email" class="form-control" id="email" name="j_username">
+  </div>
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    <input type="password" class="form-control" id="pwd" name="j_password">
+  </div>
+  <div class="checkbox">
+    <label><input type="checkbox"> Remember me</label>
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+header.jsp
+--------------
+<ul class="nav navbar-nav">  
+            <li>  
+                <a href="./">Home</a>  
+            </li>  
+              <c:if test="${pageContext.request.userPrincipal.name  == 'admin123@gmail.com'}">
+              <li>  
+               <a href="admin/adding">Admin</a>              
+              </li>  
+            </c:if> 
+             <c:if test="${pageContext.request.userPrincipal.name  != 'admin123@gmail.com'}">
+            <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Category List
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+        <c:forEach var="c" items="${clist}" >
+          <li><a href="categoryProductlist?id=<c:out value='${c.cid}'/>"><c:out value="${c.name}"/></a></li>
+       </c:forEach>
+          </ul>
+          </li>
+          </c:if>
+           <c:if test="${pageContext.request.userPrincipal.name != null && pageContext.request.userPrincipal.name  != 'admin123@gmail.com'}">
+            <li>       
+            <a href="checkout">My Cart<i class="fa fa-shopping-cart" ></i></a> 
+            </li> 
+            </c:if> 
+            <li>  
+             <c:if test="${pageContext.request.userPrincipal.name == null }">
+                <a href="register">Register</a>  
+                </c:if>
+            </li>  
+            <li>  
+            <c:if test="${pageContext.request.userPrincipal.name == null }">
+                <a href="login">Login</a>
+            </c:if>    
+            </li>  
+             <li>  
+            <c:if test="${pageContext.request.userPrincipal.name  != null}">
+					<li><a>Welcome: ${pageContext.request.userPrincipal.name}</a></li>
+					<li><a href='<c:url value="/j_spring_security_logout" />'>Logout</a></li>
+				</c:if>
+            </li>  
+        </ul>  

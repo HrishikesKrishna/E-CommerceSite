@@ -85,4 +85,6 @@ public void deleteCategory(int id) {
 	t.commit();
 	ssn.close();
 }
+
+
 }

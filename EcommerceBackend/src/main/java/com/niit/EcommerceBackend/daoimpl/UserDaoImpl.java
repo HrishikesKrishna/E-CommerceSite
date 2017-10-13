@@ -22,9 +22,8 @@ public UserDaoImpl(SessionFactory sessionFactory)
 	this.sessionFactory=sessionFactory;
 }
 
-	public UserDaoImpl() {
 	
-}
+
 
 	public void saveUser(User u) {
 		// TODO Auto-generated method stub

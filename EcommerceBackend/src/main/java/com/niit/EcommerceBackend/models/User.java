@@ -23,17 +23,17 @@ public class User implements Serializable {
 	
 	
 	
-	@Column(name="Username",nullable=false)
-	private String uname;
+	@Column(name="NAME",nullable=false)
+	private String name;
 	 
-	@Column(name="Useremail",nullable=false)
-	private String umail;
+	@Column(name="EMAIL",nullable=false)
+	private String email;
 	
-	@Column(name="Userpass",nullable=false)
-	private String upass;
+	@Column(name="PASSWORD",nullable=false)
+	private String pass;
 	
-	@Column(name="Usermobile",nullable=false)
-	private long umobno;
+	@Column(name="ROLE",nullable=false)
+	private String role;
 
 	public int getId() {
 		return id;
@@ -43,37 +43,38 @@ public class User implements Serializable {
 		this.id = id;
 	}
 
-	public String getUname() {
-		return uname;
+	public String getName() {
+		return name;
 	}
 
-	public void setUname(String uname) {
-		this.uname = uname;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getUmail() {
-		return umail;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setUmail(String umail) {
-		this.umail = umail;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public String getUpass() {
-		return upass;
+	public String getPass() {
+		return pass;
 	}
 
-	public void setUpass(String upass) {
-		this.upass = upass;
+	public void setPass(String pass) {
+		this.pass = pass;
 	}
 
-	public long getUmobno() {
-		return umobno;
+	public String getRole() {
+		return role;
 	}
 
-	public void setUmobno(long umobno) {
-		this.umobno = umobno;
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	
-}
+
+	}

@@ -6,5 +6,5 @@ import com.niit.EcommerceBackend.models.User;
 
 public interface UserDao {
 	
-void saveUser(User u);
+public void saveUser(User u);
 }

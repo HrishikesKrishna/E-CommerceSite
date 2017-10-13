@@ -10,13 +10,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.EcommerceBackend.dao.CategoryDao;
+import com.niit.EcommerceBackend.dao.ProductDao;
 import com.niit.EcommerceBackend.models.Category;
+import com.niit.EcommerceBackend.models.Product;
 
 @Controller
 public class CategoryController {
 
 	@Autowired
 	CategoryDao cdao;
+	
+	@Autowired
+	ProductDao pdao;
 	
 	@RequestMapping("/addc")
 	public ModelAndView cat(@RequestParam("Catname") String catname) {
@@ -64,6 +69,14 @@ public class CategoryController {
 	{
 		ModelAndView mv=new ModelAndView("CategoryList");
 		cdao.deleteCategory(cid);
+		return mv;
+	}
+	@RequestMapping("/selectcat")
+	public ModelAndView sct(@RequestParam("cid")int cid)
+	{
+		ModelAndView mv=new ModelAndView("ProductCatalogue");
+		List<Product> p=(List<Product>)pdao.getProbycatid(cid);
+		mv.addObject("lpcd", p);
 		return mv;
 	}
 }
