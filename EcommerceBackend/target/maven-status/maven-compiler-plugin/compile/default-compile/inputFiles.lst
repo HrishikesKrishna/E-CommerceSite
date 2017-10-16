@@ -1,3 +1,4 @@
+C:\Users\USER\workspace\EcommerceBackend\src\main\java\com\niit\EcommerceBackend\dao\CartDao.java
 C:\Users\USER\workspace\EcommerceBackend\src\main\java\com\niit\EcommerceBackend\dao\ProductDao.java
 C:\Users\USER\workspace\EcommerceBackend\src\main\java\com\niit\EcommerceBackend\daoimpl\UserDaoImpl.java
 C:\Users\USER\workspace\EcommerceBackend\src\main\java\com\niit\EcommerceBackend\dao\CategoryDao.java
@@ -5,10 +6,12 @@ C:\Users\USER\workspace\EcommerceBackend\src\main\java\com\niit\EcommerceBackend
 C:\Users\USER\workspace\EcommerceBackend\src\main\java\com\niit\EcommerceBackend\dao\UserDao.java
 C:\Users\USER\workspace\EcommerceBackend\src\main\java\com\niit\EcommerceBackend\models\User.java
 C:\Users\USER\workspace\EcommerceBackend\src\main\java\com\niit\EcommerceBackend\daoimpl\SupplierDaoImpl.java
+C:\Users\USER\workspace\EcommerceBackend\src\main\java\com\niit\EcommerceBackend\models\Cart.java
 C:\Users\USER\workspace\EcommerceBackend\src\main\java\com\niit\EcommerceBackend\daoimpl\ProductDaoImpl.java
 C:\Users\USER\workspace\EcommerceBackend\src\main\java\com\niit\EcommerceBackend\models\Category.java
 C:\Users\USER\workspace\EcommerceBackend\src\main\java\com\niit\EcommerceBackend\models\Supplier.java
 C:\Users\USER\workspace\EcommerceBackend\src\main\java\com\niit\EcommerceBackend\daoimpl\CategoryDaoImpl.java
 C:\Users\USER\workspace\EcommerceBackend\src\main\java\com\niit\EcommerceBackend\config\HibernateConfigFile.java
+C:\Users\USER\workspace\EcommerceBackend\src\main\java\com\niit\EcommerceBackend\daoimpl\CartDaoImpl.java
 C:\Users\USER\workspace\EcommerceBackend\src\main\java\com\niit\EcommerceBackend\App.java
 C:\Users\USER\workspace\EcommerceBackend\src\main\java\com\niit\EcommerceBackend\models\Product.java

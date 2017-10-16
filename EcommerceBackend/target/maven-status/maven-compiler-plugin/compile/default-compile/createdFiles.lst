@@ -6,8 +6,11 @@ com\niit\EcommerceBackend\models\Supplier.class
 com\niit\EcommerceBackend\dao\ProductDao.class
 com\niit\EcommerceBackend\dao\CategoryDao.class
 com\niit\EcommerceBackend\dao\UserDao.class
+com\niit\EcommerceBackend\models\Cart.class
 com\niit\EcommerceBackend\models\Product.class
 com\niit\EcommerceBackend\dao\SupplierDao.class
+com\niit\EcommerceBackend\daoimpl\CartDaoImpl.class
+com\niit\EcommerceBackend\dao\CartDao.class
 com\niit\EcommerceBackend\daoimpl\SupplierDaoImpl.class
 com\niit\EcommerceBackend\daoimpl\ProductDaoImpl.class
 com\niit\EcommerceBackend\daoimpl\UserDaoImpl.class

@@ -12,7 +12,7 @@
 <div class="container-fluid">
 <div class="jumbotron">
 <p><strong>Login</strong></p>
-<button type="button" class="btn btn-primary">Continue Shopping</button>
+
 
 <form class="form-horizontal" action="j_spring_security_check"  method="post">
 <h3>Please Login</h3>

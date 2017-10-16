@@ -20,7 +20,11 @@
    
     <ul class="nav navbar-nav">
       <li><a href="">Home</a></li>
+   
+       <c:if test="${pageContext.request.userPrincipal.name  == 'hrishikeskrishna@rediffmail.com'}">
       <li><a href="admin">Admin</a></li>
+       </c:if> 
+        <c:if test="${pageContext.request.userPrincipal.name  != 'hrishikeskrishna@rediffmai.com'}">
       <li class="dropdown">
     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Search Category
     <span class="caret"></span></button>
@@ -29,6 +33,7 @@
       <li><a href="selectcat?cid=${category.id}">${category.catname}</a></li>
      </c:forEach>
      </ul>
+       </c:if>
   </ul>
     <ul class="nav navbar-nav navbar-right">
     <li><a href="cart">Cart</a></li>

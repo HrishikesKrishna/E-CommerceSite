@@ -30,7 +30,7 @@ public class UserController {
 		u.setName(name);
 		u.setEmail(email);
 		u.setPass(psw);
-		u.setRole("user");
+		u.setRole("ROLE_USER");
 		udao.saveUser(u);
 		ModelAndView mv=new ModelAndView("Login");
 		List<Category> cd=(List<Category>)cdao.getAllCategories();

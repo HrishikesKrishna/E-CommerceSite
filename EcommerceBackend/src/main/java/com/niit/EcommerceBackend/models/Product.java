@@ -1,6 +1,7 @@
 package com.niit.EcommerceBackend.models;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -40,6 +41,11 @@ public class Product implements Serializable {
 	@Column(name="price",nullable=false)
 	private int price;
 	
+	@Column(name="Image")
+	private String image;
+
+	
+	
 	@ManyToOne
 	@JoinColumn(name="S_ID",insertable=true,updatable=true,nullable=false)
 	private Supplier sid;
@@ -48,9 +54,8 @@ public class Product implements Serializable {
 	@JoinColumn(name="C_ID",insertable=true,updatable=true,nullable=false)
 	private Category cid;
 	
-	@Column(name="Image")
-	private String image;
 
+	
 	
 	public String getImage() {
 		return image;

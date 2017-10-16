@@ -16,10 +16,7 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
 		 <!-- setting maximum upload size -->
 		<property name="maxUploadSize" value="30000000" />
-
-</bean>
-
- <mvc:annotation-driven/>
+</bean> <mvc:annotation-driven/>
 <mvc:resources mapping="/resources/**" location="/resources/" />
 
     <context:component-scan base-package="com.niit.EcommerceFrontEmd.controller" />

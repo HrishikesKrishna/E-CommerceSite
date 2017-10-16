@@ -6,13 +6,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>HK's Project</title>
+
 </head>
 <body>
 <jsp:include page="Header.jsp"/>
 
 
-<h2><b>FITNESS ZONE</b></h2>
-<h4>Welcome to home of all fitness and gym equipments</h4>
+
+
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
@@ -25,19 +26,19 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
     <div class="item active">
-      <img src="resources/StaticImages/spike.jpg" alt="SPIKE" style="width:100%;height:250px">
+      <img src="resources/StaticImages/spike.jpg" alt="SPIKE" style="width:100%;height:300px">
     </div>
 
     <div class="item">
-      <img src="resources/StaticImages/BIOTEST.jpg" alt="BIOTEST"style="width:100%;height:250px">
+      <img src="resources/StaticImages/BIOTEST.jpg" alt="BIOTEST"style="width:100%;height:300px">
     </div>
 
     <div class="item">
-      <img src="resources/StaticImages/vekta.jpg" alt=""style="width:100%;height:250px">
+      <img src="resources/StaticImages/vekta.jpg" alt=""style="width:100%;height:300px">
     </div>
     
      <div class="item">
-      <img src="resources/StaticImages/aw.jpg" alt="BIOTEST"style="width:100%;height:250px">
+      <img src="resources/StaticImages/aw.jpg" alt="BIOTEST"style="width:100%;height:300px">
     </div>
     
   </div>
