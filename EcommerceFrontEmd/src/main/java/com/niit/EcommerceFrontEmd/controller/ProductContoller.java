@@ -127,6 +127,13 @@ public class ProductContoller {
 		pdao.deleteProduct(pid);
 		return mv;
 	}
-	
-	
+	@RequestMapping("/productpage")
+	public ModelAndView pdp(@RequestParam("pid")int pid)
+	{
+		ModelAndView mv=new ModelAndView("Productpage");
+		Product pr=new Product();
+		pr=pdao.getprobyid(pid);
+		mv.addObject("probyid",pr);
+		return mv;
+	}
 }

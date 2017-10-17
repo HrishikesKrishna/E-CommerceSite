@@ -144,31 +144,32 @@ a.text-warning:hover {
 </head>
 <body>
 <jsp:include page="Header.jsp"/>
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
 <div class="container bootstrap snippet">
     
     <div class="row">
     <c:forEach items="${lpcd}" var="productl" >
+   
     <div class="col-md-4 col-sm-4">
                 <div class="store-item">
                     
                     <div class="store-item-image">
-                        <a href="#">
+                        <a href="productpage?pid=${productl.id}">
                             <img src="resources/DatabaseImages/${productl.image}" alt="" class="img-responsive">
                         </a>
                     </div>
                     <div class="store-item-info clearfix">
                         <span class="store-item-price themed-color-dark pull-right">${productl.price}</span>
-                        <a href=""><strong>${productl.name}</strong></a><br>
+                        <a href="productpage?pid=${productl.id}"><strong>${productl.name}</strong></a><br>
                         <small><i class="fa fa-shopping-cart text-muted"></i>
-                        <a href="#" class="text-muted">Add to Cart</a></small> <!-- a href for going to corrsponding product page give in out of div to enable to entire ox instead of seperate elements like photo and name -->
+                        <a href="" class="text-muted">Add to Cart</a></small> <!-- a href for going to corrsponding product page give in out of div to enable to entire ox instead of seperate elements like photo and name -->
                     </div>
                 </div>
             </div> 
+         
             </c:forEach>
             </div>
-            
+           
             </div>
             
 

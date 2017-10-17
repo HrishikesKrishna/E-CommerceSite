@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import com.niit.EcommerceBackend.models.Product;
 	import com.niit.EcommerceBackend.models.Supplier;
 import com.niit.EcommerceBackend.models.User;
-
+import com.niit.EcommerceBackend.models.Cart;
 import com.niit.EcommerceBackend.models.Category;
 	@Configuration
 	@ComponentScan("com.niit.EcommerceBackend")
@@ -40,7 +40,7 @@ import com.niit.EcommerceBackend.models.Category;
 		        sessionBuilder.addAnnotatedClass(Category.class);
 		        sessionBuilder.addAnnotatedClass(User.class);
 		        sessionBuilder.addAnnotatedClass(Supplier.class);
-		      
+		        sessionBuilder.addAnnotatedClass(Cart.class);
 		        
 		       
 		        

@@ -33,7 +33,7 @@ button {
       <li><a href="">Home</a></li>
    
       
-        <c:if test="${pageContext.request.userPrincipal.name  != 'hrishikeskrishna@rediffmai.com'}">
+        <c:if test="${pageContext.request.userPrincipal.name  !='hrishikeskrishna@rediffmail.com'}">
       <li class="dropdown">
     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" >Search Category
     <span class="caret"></span></button>

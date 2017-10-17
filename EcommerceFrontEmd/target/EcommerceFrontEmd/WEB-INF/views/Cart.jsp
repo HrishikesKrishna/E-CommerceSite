@@ -7,14 +7,12 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>HK's Project</title>
 <style>
-body {
-	margin-top: 20px;
-}
+
 /* Set a style for all buttons */
 button {
     background-color: #4c6baf;
     color: white;
-    padding: 14px 20px;
+    padding: 14px ;
     margin: 8px 0;
     border: none;
     cursor: pointer;
