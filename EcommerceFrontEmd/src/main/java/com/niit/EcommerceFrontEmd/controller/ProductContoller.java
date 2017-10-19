@@ -133,6 +133,8 @@ public class ProductContoller {
 		ModelAndView mv=new ModelAndView("Productpage");
 		Product pr=new Product();
 		pr=pdao.getprobyid(pid);
+		List<Category> cd=(List<Category>)cdao.getAllCategories();
+		mv.addObject("catd", cd);
 		mv.addObject("probyid",pr);
 		return mv;
 	}

@@ -52,8 +52,9 @@
     <span class="glyphicon glyphicon-chevron-right"></span>
     <span class="sr-only">Next</span>
   </a>
-</div>
+
 
 <footer>&copy; NIIT E-Commerce Case Study Project 2017</footer>
+
 </body>
 </html>

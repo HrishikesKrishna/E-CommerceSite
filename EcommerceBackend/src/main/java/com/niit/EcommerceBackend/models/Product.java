@@ -27,8 +27,9 @@ public class Product implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Id
+	
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@Id
 	private int id;
 	
 	
@@ -54,9 +55,18 @@ public class Product implements Serializable {
 	@JoinColumn(name="C_ID",insertable=true,updatable=true,nullable=false)
 	private Category cid;
 	
+	@OneToMany(targetEntity=Cart.class,mappedBy="pid",fetch=FetchType.EAGER)
+	private Set<Cart>cart;
+	
+	
+	public Set<Cart> getCart() {
+		return cart;
+	}
 
-	
-	
+	public void setCart(Set<Cart> cart) {
+		this.cart = cart;
+	}
+
 	public String getImage() {
 		return image;
 	}

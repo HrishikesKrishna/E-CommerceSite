@@ -46,17 +46,25 @@
 	</div>
 	</div>
 	
+	
+	
 	<div class="row add-to-cart">
- 	
-    <div class="col-md-4">
-    <button href="addcart?pid=${probyid.id}" class="btn btn-lg btn-brand btn-full-width">
+ 	<div class="col-md-4">
+    <div class="form-group">
+	<label>Quantity</label>
+	<form action="addcart" method="post">
+	<input type="number" name="qty" required>
+	<input type="hidden" name="pid" value="${probyid.id}"/>
+	<button type="submit" class="btn btn-lg btn-brand btn-full-width">
     Add to Cart
     </button>
-     <button class="btn btn-lg btn-brand btn-full-width">
+  	<button class="btn btn-lg btn-brand btn-full-width">
     Buy Now
     </button>
-    </div>
-
+   	</form>
+	</div>
+	</div>
+	
 </div><!-- end row -->
 </div>
 </div>

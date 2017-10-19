@@ -26,9 +26,9 @@
 <!-- give as action of logout -->
 		<security:logout
 		     logout-url="/j_spring_security_logout" 
-			logout-success-url="/" />
+			logout-success-url="/index" />
             <security:access-denied-handler
-                     error-page="/error" />
+                     error-page="/Errorpage" />
 		<!-- enable csrf protection -->
 		<security:csrf disabled="true" />
 	</security:http>

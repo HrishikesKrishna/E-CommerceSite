@@ -76,7 +76,9 @@ public class CategoryController {
 	{
 		ModelAndView mv=new ModelAndView("ProductCatalogue");
 		List<Product> p=(List<Product>)pdao.getProbycatid(cid);
+		List<Category> cd=(List<Category>)cdao.getAllCategories();
 		mv.addObject("lpcd", p);
+		mv.addObject("catd", cd);
 		return mv;
 	}
 }

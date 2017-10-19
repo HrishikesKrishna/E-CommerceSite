@@ -49,9 +49,20 @@ button {
   </ul>
  
     <ul class="nav navbar-nav navbar-right">
+    <c:if test="${pageContext.request.userPrincipal.name != null && pageContext.request.userPrincipal.name != 'hrishikeskrishna@rediffmail.com'}">
     <li><a href="cart">Cart</a></li>
+   	</c:if>
+   	<c:if test="${pageContext.request.userPrincipal.name == null}">
     <li><a href="login">Login</a></li>
     <li><a href="signup">Create Account</a></li>
+    </c:if>
+    <c:if test="${pageContext.request.userPrincipal.name != null}">
+    <li><a>Welcome ${pageContext.request.userPrincipal.name}</a></li>
+  	
+  	</c:if>
+  	<c:if test="${pageContext.request.userPrincipal.name!=null}">
+  	<li><a href="j_spring_security_logout">Logout</a></li>
+  	</c:if>
     </ul>
    
    </div>  

@@ -32,7 +32,7 @@ public class Cart implements Serializable {
 
 	
 	@Column(name="USERNAME")
-	private String uname;
+	private String username;
 	
 	@Column(name="PRICE")
 	private int price;
@@ -45,7 +45,7 @@ public class Cart implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name="P_ID",updatable=true,insertable=true,nullable=false)
-	Product pid;
+	private Product pid;
 
 	public int getId() {
 		return id;
@@ -56,11 +56,11 @@ public class Cart implements Serializable {
 	}
 
 	public String getUname() {
-		return uname;
+		return username;
 	}
 
 	public void setUname(String uname) {
-		this.uname = uname;
+		this.username = uname;
 	}
 
 	public int getPrice() {
