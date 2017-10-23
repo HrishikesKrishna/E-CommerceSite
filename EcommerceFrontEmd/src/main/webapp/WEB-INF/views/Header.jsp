@@ -30,7 +30,7 @@ button {
    
    
     <ul class="nav navbar-nav">
-      <li><a href="">Home</a></li>
+      <li><a href="./">Home</a></li>
    
       
         <c:if test="${pageContext.request.userPrincipal.name  !='hrishikeskrishna@rediffmail.com'}">
@@ -44,7 +44,7 @@ button {
      </ul>
        </c:if>
         <c:if test="${pageContext.request.userPrincipal.name  == 'hrishikeskrishna@rediffmail.com'}">
-      <li><a href="admin">Admin</a></li>
+      <li><a href="ad">Admin</a></li>
        </c:if> 
   </ul>
  
@@ -61,7 +61,7 @@ button {
   	
   	</c:if>
   	<c:if test="${pageContext.request.userPrincipal.name!=null}">
-  	<li><a href="j_spring_security_logout">Logout</a></li>
+  	<li><a href='<c:url value="/j_spring_security_logout"/>'>Logout</a></li>
   	</c:if>
     </ul>
    

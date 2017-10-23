@@ -89,10 +89,10 @@ public class CartDaoImpl implements CartDao{
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();
 		t.begin();
-		ssn.update(id);
+		Cart c =(Cart)ssn.get(Cart.class, id);
+		ssn.delete(c);
 		t.commit();
 		ssn.close();
-		
 	}
 
 	public void updateQuantity(int cartid, int qty) {

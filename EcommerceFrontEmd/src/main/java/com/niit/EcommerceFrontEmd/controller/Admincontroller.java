@@ -21,7 +21,7 @@ public class Admincontroller {
 	@Autowired
 	SupplierDao sdao;
 	
-	@RequestMapping("/admin")
+	@RequestMapping("/admin/ad")
 	public ModelAndView admin()
 	{
 		ModelAndView mv=new ModelAndView("Admin");
@@ -32,5 +32,10 @@ public class Admincontroller {
 		mv.addObject("sup", ss);
 		return mv;
 }
-
+	@RequestMapping("/ad")
+	public ModelAndView adpage()
+	{
+		ModelAndView mv=new ModelAndView("redirect:/admin/ad");
+		return mv;
+	}
 }

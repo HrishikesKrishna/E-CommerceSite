@@ -26,19 +26,19 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
     <div class="item active">
-      <img src="resources/StaticImages/spike.jpg" alt="SPIKE" style="width:100%;height:300px">
+      <img src="${pageContext.request.contextPath}/resources/StaticImages/spike.jpg" alt="SPIKE" style="width:100%;height:300px">
     </div>
 
     <div class="item">
-      <img src="resources/StaticImages/BIOTEST.jpg" alt="BIOTEST"style="width:100%;height:300px">
+      <img src="${pageContext.request.contextPath}/resources/StaticImages/BIOTEST.jpg" alt="BIOTEST"style="width:100%;height:300px">
     </div>
 
     <div class="item">
-      <img src="resources/StaticImages/vekta.jpg" alt=""style="width:100%;height:300px">
+      <img src="${pageContext.request.contextPath}/resources/StaticImages/vekta.jpg" alt=""style="width:100%;height:300px">
     </div>
     
      <div class="item">
-      <img src="resources/StaticImages/aw.jpg" alt="BIOTEST"style="width:100%;height:300px">
+      <img src="${pageContext.request.contextPath}/resources/StaticImages/aw.jpg" alt="aw"style="width:100%;height:300px">
     </div>
     
   </div>
@@ -52,8 +52,9 @@
     <span class="glyphicon glyphicon-chevron-right"></span>
     <span class="sr-only">Next</span>
   </a>
-</div>
 
-<footer>&copy; NIIT E-Commerce Case Study Project 2017</footer>
+
+<footer style="margin-top:100 px"> &copy; NIIT E-Commerce Case Study Project 2017</footer>
+
 </body>
 </html>

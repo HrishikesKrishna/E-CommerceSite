@@ -31,7 +31,7 @@ public class ProductContoller {
 	@Autowired
 	CategoryDao cdao;
 	
-	@RequestMapping("/addp")
+	@RequestMapping("/admin/addp")
 	public ModelAndView pro(@RequestParam("name")String Productname,@RequestParam("stds")String shortdescription,@RequestParam("price") int price,@RequestParam("cat") int ci,@RequestParam("sup") int ss,@RequestParam("img") MultipartFile file )
 	{
 		System.out.println("Controller");
@@ -71,7 +71,7 @@ public class ProductContoller {
 	}
 	
 	
-	@RequestMapping("/listp")
+	@RequestMapping("/admin/listp")
 	public ModelAndView lp(){
 		ModelAndView mv=new ModelAndView("ProductList");
 		List<Product> p=(List<Product>)pdao.getAllProducts();
@@ -80,7 +80,7 @@ public class ProductContoller {
         return mv;
 	}
 	
-	@RequestMapping("/updatep")
+	@RequestMapping("/admin/updatep")
 	public ModelAndView up(@RequestParam("pid")int pid)
 	{
 		
@@ -97,7 +97,7 @@ public class ProductContoller {
 		return mv;
 		
 	}
-	@RequestMapping("/updatepro")
+	@RequestMapping("/admin/updatepro")
 	public ModelAndView upr(@RequestParam("id")int id,@RequestParam("name")String name,@RequestParam("cat")int cat,@RequestParam("sup")int sup,@RequestParam("stds")String stds,@RequestParam("price")int price){
 		Product p=new Product();
 		p.setId(id);
@@ -120,7 +120,7 @@ public class ProductContoller {
         mv.addObject("listop", pl);
 		return mv;
 	}
-	@RequestMapping("/deletep")
+	@RequestMapping("/admin/deletep")
 	public ModelAndView dp(@RequestParam("pid")int pid)
 	{
 		ModelAndView mv=new  ModelAndView("ProductList");

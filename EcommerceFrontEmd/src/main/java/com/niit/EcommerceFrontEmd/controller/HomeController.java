@@ -53,6 +53,25 @@ import com.niit.EcommerceBackend.models.User;
 					
 				}
 		
+		@RequestMapping("/user")
+		public ModelAndView Homi()
+				{
+					ModelAndView mv=new ModelAndView("index");
+					List<Category> cd=(List<Category>)cdao.getAllCategories();
+					mv.addObject("catd", cd);
+					return mv;
+					
+				}
+		
+		@RequestMapping("/admin")
+		public ModelAndView Homm()
+				{
+					ModelAndView mv=new ModelAndView("index");
+					List<Category> cd=(List<Category>)cdao.getAllCategories();
+					mv.addObject("catd", cd);
+					return mv;
+					
+				}
 		
 		@RequestMapping("/hello")
 		public ModelAndView showMessage(@RequestParam(value ="name", required =false, defaultValue="World")String name){
@@ -63,16 +82,7 @@ import com.niit.EcommerceBackend.models.User;
 			return mv;
 		}
 		
-		@RequestMapping("/index")
-		public String index()
-		{
-			return "index";
-		}
-		@RequestMapping("/cart")
-		public String Cart()
-		{
-			return"Cart";
-		}
+		
 		@RequestMapping("/login")
 		public ModelAndView Login()
 		{
@@ -81,12 +91,20 @@ import com.niit.EcommerceBackend.models.User;
 			mv.addObject("catd", cd);
 			return mv;
 		}
+		
 		@RequestMapping("/signup")
 		public ModelAndView sgup()
 		{
 			ModelAndView mv=new ModelAndView("Signup");
 			List<Category> cd=(List<Category>)cdao.getAllCategories();
 			mv.addObject("catd", cd);
+			return mv;
+		}
+		
+		@RequestMapping("/errorlogin")
+		public ModelAndView erlg()
+		{
+			ModelAndView mv=new ModelAndView("Errorpage");
 			return mv;
 		}
 		

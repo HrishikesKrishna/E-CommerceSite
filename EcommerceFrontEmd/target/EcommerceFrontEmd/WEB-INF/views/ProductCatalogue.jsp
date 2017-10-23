@@ -12,9 +12,6 @@
 <title>Insert title here</title>
 <style>
 
-body{
-    margin-top:20px;
-}
 
 .store-item {
     padding: 5px;

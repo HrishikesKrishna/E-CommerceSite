@@ -19,16 +19,22 @@
 		    login-processing-url="/j_spring_security_check" 
 			password-parameter="cpassword"
 			 username-parameter="cusername"
-			 authentication-failure-url="/error" 
+			 authentication-failure-url="/errorlogin" 
 			default-target-url="/"
 			login-page="/login" />
 			
 <!-- give as action of logout -->
 		<security:logout
 		     logout-url="/j_spring_security_logout" 
-			logout-success-url="/index" />
-            <security:access-denied-handler
-                     error-page="/Errorpage" />
+			logout-success-url="/" />
+			
+			<!-- <security:logout
+		     logout-url="/admin/j_spring_security_logout" 
+			logout-success-url="/" /> -->
+			
+			
+			
+			<security:access-denied-handler error-page="/Errorpage" />
 		<!-- enable csrf protection -->
 		<security:csrf disabled="true" />
 	</security:http>

@@ -23,7 +23,7 @@ public class CategoryController {
 	@Autowired
 	ProductDao pdao;
 	
-	@RequestMapping("/addc")
+	@RequestMapping("/admin/addc")
 	public ModelAndView cat(@RequestParam("Catname") String catname) {
 		System.out.println("Controller");
 		System.out.println(catname);
@@ -36,7 +36,7 @@ public class CategoryController {
 		mv1.addObject("cate",cc);
 		return mv1;
 	}
-	@RequestMapping("/listc")
+	@RequestMapping("/admin/listc")
 	public ModelAndView lc(){
 		ModelAndView mv=new ModelAndView("CategoryList");
         List<Category> c=(List<Category>)cdao.getAllCategories();
@@ -44,7 +44,7 @@ public class CategoryController {
         return mv;
 	
 	}
-	@RequestMapping("/updatec")
+	@RequestMapping("/admin/updatec")
 	public ModelAndView uc(@RequestParam("cid")int cid)
 	{
 		Category c=new Category();
@@ -53,7 +53,7 @@ public class CategoryController {
 		mv.addObject("cat",	c);
 		return mv;
 	}
-	@RequestMapping("/updatecat")
+	@RequestMapping("/admin/updatecat")
 	public ModelAndView ucat(@RequestParam("id")int id,@RequestParam("name")String cname)
 	{
 		Category c=new Category();
@@ -64,14 +64,21 @@ public class CategoryController {
 		return mv;
 		
 	}
-	@RequestMapping("/deletec")
+	@RequestMapping("/admin/deletec")
 	public ModelAndView dc(@RequestParam("cid")int cid)
 	{
 		ModelAndView mv=new ModelAndView("CategoryList");
-		cdao.deleteCategory(cid);
+		try {
+			cdao.deleteCategory(cid);
+			mv.addObject("scssg","Suceesfully deleted");
+		}
+		catch(Exception e) 
+		{
+			mv.addObject("ermsg", "Unable to Delete Category,there are undeleted products present in the category");
+		}
 		return mv;
 	}
-	@RequestMapping("/selectcat")
+	@RequestMapping("/user/selectcat")
 	public ModelAndView sct(@RequestParam("cid")int cid)
 	{
 		ModelAndView mv=new ModelAndView("ProductCatalogue");

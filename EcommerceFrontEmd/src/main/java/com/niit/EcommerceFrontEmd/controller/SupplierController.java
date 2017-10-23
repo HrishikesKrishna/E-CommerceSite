@@ -18,7 +18,7 @@ public class SupplierController {
 	SupplierDao sdao;
 
 
-	@RequestMapping("/adds")
+	@RequestMapping("/admin/adds")
 	public ModelAndView sup(@RequestParam("supname") String suppliername,@RequestParam("sadr") String supplieraddress) {
 		System.out.println("Controller");
 		System.out.println(suppliername+supplieraddress);
@@ -29,7 +29,7 @@ public class SupplierController {
 		ModelAndView mv1= new ModelAndView("Admin");
 		return mv1;
 	}
-	@RequestMapping("/lists")
+	@RequestMapping("/admin/lists")
 	public ModelAndView ls(){
 		ModelAndView mv=new ModelAndView("SupplierList");
         List<Supplier> s=(List<Supplier>)sdao.getAllSupplier();
@@ -37,7 +37,7 @@ public class SupplierController {
         return mv;
 	
 	}
-	@RequestMapping("/updates")
+	@RequestMapping("/admin/updates")
 	public ModelAndView us(@RequestParam("sid")int sid)
 	{
 		ModelAndView mv=new ModelAndView("SupplierUpdate");
@@ -46,7 +46,7 @@ public class SupplierController {
 		mv.addObject("sup", s);
 		return mv;
 	}
-	@RequestMapping("/updatesup")
+	@RequestMapping("/admin/updatesup")
 	public ModelAndView usp(@RequestParam("name")String name)
 	{
 		Supplier s=new Supplier();
@@ -56,7 +56,7 @@ public class SupplierController {
 		return mv;
 		
 	}
-	@RequestMapping("/deletes")
+	@RequestMapping("/admin/deletes")
 	public ModelAndView ds(@RequestParam("sid")int sid)
 	{
 		ModelAndView mv=new ModelAndView("SupplierList");

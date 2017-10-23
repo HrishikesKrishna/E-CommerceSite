@@ -39,49 +39,52 @@ button {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    
                     <c:forEach var="lc" items="${locart}" >
+                    <tr>    
                         <td class="col-sm-8 col-md-6">
                         <div class="media">
-                            <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>
+                            <a class="thumbnail pull-left" href="#"> <img class="media-object" src="${pageContext.request.contextPath}/resources/DatabaseImages/${lc.pid.image}" style="width: 72px; height: 72px;"> </a><!-- $continous interception,so page context provides full diectory image url b4 resourc/dbimage -->
                             <div class="media-body">
-                                <h4 class="media-heading"><a href="#">${lc.name}</a></h4>
-                                <h5 class="media-heading"> by <a href="#">Brand name</a></h5>
-                                <span>Status: </span><span class="text-success"><strong>In Stock</strong></span>
+                                <h4 class="media-heading"><a href="#">${lc.pid.name}</a></h4> <!-- lc.pid bcs theres no name in cart table  we have to access it through pid value -->
+                                <h5 class="media-heading"> by <a href="#">${lc.pid.sid.supname}</a></h5>
+                               
                             </div>
-                        </div></td>
+                        </div>
                         <td class="col-sm-1 col-md-1" style="text-align: center">
-                        <input type="email" class="form-control" id="exampleInputEmail1" value="3">
-                        </td>
+                       <td class="col-sm-1 col-md-1 text-center"><strong>${lc.qty}</strong></td>
+                        
                         <td class="col-sm-1 col-md-1 text-center"><strong>${lc.price}</strong></td>
-                        <td class="col-sm-1 col-md-1 text-center"><strong>$14.61</strong></td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong>${lc.price*lc.qty}</strong></td>
                         <td class="col-sm-1 col-md-1">
-                        <button type="button" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove"></span> Remove
-                        </button></td>
+                        <a class="btn btn-danger" href="deletecart?caid=${lc.id}">
+                            <span class="glyphicon glyphicon-remove"></span> Remove</a>
+                      </td>
+                       
+                        </tr>
                         </c:forEach>
-                    </tr>
+                    
                     
                                     <tr>
                         <td>   </td>
                         <td>   </td>
                         <td>   </td>
                         <td><h5>Subtotal</h5></td>
-                        <td class="text-right"><h5><strong>$24.59</strong></h5></td>
+                        <td class="text-right"><h5><strong>${tp}</strong></h5></td>
                     </tr>
                     <tr>
                         <td>   </td>
                         <td>   </td>
                         <td>   </td>
-                        <td><h5>Estimated shipping</h5></td>
-                        <td class="text-right"><h5><strong>$6.94</strong></h5></td>
+                        <td><h5>Tax</h5></td>
+                        <td class="text-right"><h5><strong>6.94</strong></h5></td>
                     </tr>
                     <tr>
                         <td>   </td>
                         <td>   </td>
                         <td>   </td>
                         <td><h3>Total</h3></td>
-                        <td class="text-right"><h3><strong>$31.53</strong></h3></td>
+                        <td class="text-right"><h3><strong>${tp + 6.94}</strong></h3></td>
                     </tr>
                     <tr>
                         <td>   </td>
