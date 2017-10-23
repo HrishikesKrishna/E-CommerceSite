@@ -78,7 +78,7 @@ public class CategoryController {
 		}
 		return mv;
 	}
-	@RequestMapping("/user/selectcat")
+	@RequestMapping("/selectcat")
 	public ModelAndView sct(@RequestParam("cid")int cid)
 	{
 		ModelAndView mv=new ModelAndView("ProductCatalogue");
@@ -86,6 +86,13 @@ public class CategoryController {
 		List<Category> cd=(List<Category>)cdao.getAllCategories();
 		mv.addObject("lpcd", p);
 		mv.addObject("catd", cd);
+		return mv;
+	}
+	@RequestMapping("/user/selectcat")
+	public ModelAndView usct(@RequestParam("cid")int cid)
+	{
+		ModelAndView mv=new ModelAndView("redirect:/selectcat");
+		mv.addObject("cid", cid);
 		return mv;
 	}
 }

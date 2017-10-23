@@ -16,10 +16,11 @@ import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.niit.EcommerceBackend.models.Product;
-	import com.niit.EcommerceBackend.models.Supplier;
+import com.niit.EcommerceBackend.models.Supplier;
 import com.niit.EcommerceBackend.models.User;
 import com.niit.EcommerceBackend.models.Cart;
 import com.niit.EcommerceBackend.models.Category;
+import com.niit.EcommerceBackend.models.Order;
 	@Configuration
 	@ComponentScan("com.niit.EcommerceBackend")
 	@EnableTransactionManagement
@@ -41,6 +42,7 @@ import com.niit.EcommerceBackend.models.Category;
 		        sessionBuilder.addAnnotatedClass(User.class);
 		        sessionBuilder.addAnnotatedClass(Supplier.class);
 		        sessionBuilder.addAnnotatedClass(Cart.class);
+		        sessionBuilder.addAnnotatedClass(Order.class);
 		        
 		       
 		        

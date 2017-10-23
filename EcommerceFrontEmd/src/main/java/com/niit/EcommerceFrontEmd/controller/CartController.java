@@ -117,4 +117,18 @@ public class CartController {
 	
 		return mv;
 	}
+	@RequestMapping("user/cs")
+	public ModelAndView cspg()
+	{
+		ModelAndView mv=new ModelAndView("ProductCatalogue");
+		return mv;
+	}
+	
+	@RequestMapping("order")
+	public ModelAndView odr()
+	{
+		ModelAndView mv=new ModelAndView("Order");
+		return mv;
+		
+	}
 }

@@ -91,13 +91,13 @@ button {
                         <td>   </td>
                         <td>   </td>
                         <td>
-                        <button type="button" class="btn btn-primary">
+                        <a href="cs"><button type="button" class="btn btn-primary" >
                             <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
-                        </button></td>
+                        </button></a></td>
                         <td>
-                        <button type="button" class="btn btn-success">
+                        <a href="order"><button type="submit" class="btn btn-success">
                             Checkout <span class="glyphicon glyphicon-play"></span>
-                        </button></td>
+                        </button></a></td>
                     </tr>
                 </tbody>
             </table>

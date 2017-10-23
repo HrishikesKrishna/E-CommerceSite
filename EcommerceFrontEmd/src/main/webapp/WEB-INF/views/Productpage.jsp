@@ -58,7 +58,7 @@
 	<button type="submit" class="btn btn-lg btn-brand btn-full-width">
     Add to Cart
     </button>
-  	<button class="btn btn-lg btn-brand btn-full-width">
+  	<button class="btn btn-lg btn-brand btn-full-width" class="btn btn-lg btn-brand btn-full-width">
     Buy Now
     </button>
    	</form>

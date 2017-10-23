@@ -152,7 +152,7 @@ a.text-warning:hover {
                     
                     <div class="store-item-image">
                         <a href="productpage?pid=${productl.id}">
-                            <img src="resources/DatabaseImages/${productl.image}" alt="" class="img-responsive">
+                            <img src="${pageContext.request.contextPath}/resources/DatabaseImages/${productl.image}" alt="" class="img-responsive">
                         </a>
                     </div>
                     <div class="store-item-info clearfix">
