@@ -28,17 +28,14 @@ public class Order implements Serializable {
 	@Column(name="Name")
 	private String name;
 	
-	@Column(name="Username")
-	private String username;
-	
 	@Column(name="email")
 	private String email;
 	
 	@Column(name="Mobileno")
 	private long mobno;
 	
-	@Column(name="Address")
-	private String address;
+	@Column(name="StreetName")
+	private String sname;
 	
 	@Column(name="pin")
 	private int pin;
@@ -54,14 +51,7 @@ public class Order implements Serializable {
 		this.id = id;
 	}
 
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
+	
 	public String getEmail() {
 		return email;
 	}
@@ -78,12 +68,29 @@ public class Order implements Serializable {
 		this.mobno = mobno;
 	}
 
-	public String getAddress() {
-		return address;
+	
+	public String getName() {
+		return name;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getSname() {
+		return sname;
+	}
+
+	public void setSname(String sname) {
+		this.sname = sname;
+	}
+
+	public String getHname() {
+		return hname;
+	}
+
+	public void setHname(String hname) {
+		this.hname = hname;
 	}
 
 	public int getPin() {

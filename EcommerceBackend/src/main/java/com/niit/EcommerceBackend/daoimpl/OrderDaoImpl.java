@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.niit.EcommerceBackend.dao.OrderDao;
+import com.niit.EcommerceBackend.models.Order;
 
 @Repository("OrderDaoImpl")
 public class OrderDaoImpl implements OrderDao{
@@ -15,7 +16,7 @@ public class OrderDaoImpl implements OrderDao{
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	public void saveOrder(com.niit.EcommerceBackend.models.Order o) {
+	public void saveOrder(Order o) {
 		// TODO Auto-generated method stub
 		Session ssn=sessionFactory.openSession();
 		Transaction t=ssn.getTransaction();

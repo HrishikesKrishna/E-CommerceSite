@@ -19,6 +19,7 @@ button {
     cursor: pointer;
     width: 100%;
 }
+
 </style>
 </head>
 
@@ -50,7 +51,7 @@ button {
  
     <ul class="nav navbar-nav navbar-right">
     <c:if test="${pageContext.request.userPrincipal.name != null && pageContext.request.userPrincipal.name != 'hrishikeskrishna@rediffmail.com'}">
-    <li><a href="cart">Cart</a></li>
+    <li><a href="user/cart">Cart</a></li>
    	</c:if>
    	<c:if test="${pageContext.request.userPrincipal.name == null}">
     <li><a href="login">Login</a></li>

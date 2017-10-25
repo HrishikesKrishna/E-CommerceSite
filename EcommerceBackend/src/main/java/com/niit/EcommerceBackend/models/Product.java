@@ -55,7 +55,7 @@ public class Product implements Serializable {
 	@JoinColumn(name="C_ID",insertable=true,updatable=true,nullable=false)
 	private Category cid;
 	
-	@OneToMany(targetEntity=Cart.class,mappedBy="pid",fetch=FetchType.EAGER)
+	@OneToMany(targetEntity=Cart.class,mappedBy="pid",fetch=FetchType.LAZY)
 	private Set<Cart>cart;
 	
 	

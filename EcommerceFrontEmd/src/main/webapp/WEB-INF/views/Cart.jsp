@@ -23,8 +23,7 @@ button {
 </head>
 <body>
 <jsp:include page="Header.jsp"/>
-<div class="container-fluid">
-<div class="jumbotron">
+ 
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
@@ -39,63 +38,59 @@ button {
                     </tr>
                 </thead>
                 <tbody>
-                    
-                    <c:forEach var="lc" items="${locart}" >
-                    <tr>    
+                 <c:forEach var="lc" items="${locart}" >
+                    <tr>
                         <td class="col-sm-8 col-md-6">
                         <div class="media">
-                            <a class="thumbnail pull-left" href="#"> <img class="media-object" src="${pageContext.request.contextPath}/resources/DatabaseImages/${lc.pid.image}" style="width: 72px; height: 72px;"> </a><!-- $continous interception,so page context provides full diectory image url b4 resourc/dbimage -->
+                            <a class="thumbnail pull-left" href="#"> <img class="media-object" src="${pageContext.request.contextPath}/resources/DatabaseImages/${lc.pid.image}" style="width: 72px; height: 72px;"> </a>
                             <div class="media-body">
-                                <h4 class="media-heading"><a href="#">${lc.pid.name}</a></h4> <!-- lc.pid bcs theres no name in cart table  we have to access it through pid value -->
+                                <h4 class="media-heading"><a href="#">${lc.pid.name}</a></h4>
                                 <h5 class="media-heading"> by <a href="#">${lc.pid.sid.supname}</a></h5>
-                               
+                                <span>Status: </span><span class="text-success"><strong>In Stock</strong></span>
                             </div>
-                        </div>
-                        <td class="col-sm-1 col-md-1" style="text-align: center">
-                       <td class="col-sm-1 col-md-1 text-center"><strong>${lc.qty}</strong></td>
-                        
+                        </div></td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong>${lc.qty}</strong></td>
+                       
                         <td class="col-sm-1 col-md-1 text-center"><strong>${lc.price}</strong></td>
                         <td class="col-sm-1 col-md-1 text-center"><strong>${lc.price*lc.qty}</strong></td>
                         <td class="col-sm-1 col-md-1">
-                        <a class="btn btn-danger" href="deletecart?caid=${lc.id}">
-                            <span class="glyphicon glyphicon-remove"></span> Remove</a>
-                      </td>
-                       
-                        </tr>
-                        </c:forEach>
+                        <button type="button" class="btn btn-danger" href="deletecart?caid=${lc.id}">
+                            <span class="glyphicon glyphicon-remove"></span> Remove
+                        </button></td>
+                    </tr>
+                    </c:forEach>
                     
-                    
-                                    <tr>
+                    <tr>
                         <td>   </td>
                         <td>   </td>
                         <td>   </td>
                         <td><h5>Subtotal</h5></td>
-                        <td class="text-right"><h5><strong>${tp}</strong></h5></td>
+                        <td class="text-right"><h5><strong>${sb}</strong></h5></td>
                     </tr>
                     <tr>
                         <td>   </td>
                         <td>   </td>
                         <td>   </td>
-                        <td><h5>Tax</h5></td>
-                        <td class="text-right"><h5><strong>6.94</strong></h5></td>
+                        <td><h5>GST & Handling Charges</h5></td>
+                        <td class="text-right"><h5><strong>${gst}</strong></h5></td>
                     </tr>
                     <tr>
                         <td>   </td>
                         <td>   </td>
                         <td>   </td>
                         <td><h3>Total</h3></td>
-                        <td class="text-right"><h3><strong>${tp + 6.94}</strong></h3></td>
+                        <td class="text-right"><h3><strong>${sb+gst}</strong></h3></td>
                     </tr>
                     <tr>
                         <td>   </td>
                         <td>   </td>
                         <td>   </td>
                         <td>
-                        <a href="cs"><button type="button" class="btn btn-primary" >
+                        <a href="cs"><button type="button" class="btn btn-default">
                             <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
                         </button></a></td>
                         <td>
-                        <a href="order"><button type="submit" class="btn btn-success">
+                        <a href="checkout?tp=${sb+gst}"><button type="button" class="btn btn-success">
                             Checkout <span class="glyphicon glyphicon-play"></span>
                         </button></a></td>
                     </tr>
@@ -104,10 +99,6 @@ button {
         </div>
     </div>
 </div>
-</div>      
-</div>
-
-
 
 <footer>&copy; NIIT E-Commerce Case Study Project 2017</footer>
 </body>

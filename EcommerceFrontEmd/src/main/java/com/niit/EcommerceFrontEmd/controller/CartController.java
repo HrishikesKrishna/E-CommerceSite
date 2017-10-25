@@ -12,9 +12,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.EcommerceBackend.dao.CartDao;
 import com.niit.EcommerceBackend.dao.CategoryDao;
+import com.niit.EcommerceBackend.dao.OrderDao;
 import com.niit.EcommerceBackend.dao.ProductDao;
 import com.niit.EcommerceBackend.models.Cart;
 import com.niit.EcommerceBackend.models.Category;
+import com.niit.EcommerceBackend.models.Order;
 import com.niit.EcommerceBackend.models.Product;
 
 
@@ -31,6 +33,9 @@ public class CartController {
 	@Autowired
 	CartDao cartdao;
 	
+	@Autowired
+	OrderDao orddao;
+	
 	@RequestMapping(value="/user/cart")
 	public ModelAndView cart()
 	{
@@ -40,23 +45,19 @@ public class CartController {
 		ModelAndView mv=new ModelAndView("Cart");
 		List<Cart> li=(List<Cart>)cartdao.getCartByUser(usrname);
 		mv.addObject("locart",li);
-		int totalprice=0;
+		int subtotal=0;
 		for(Cart c:li)
 		{
 			int sum=c.getPrice()*c.getQty();
-			totalprice=totalprice+sum;
+			subtotal=subtotal+sum;
 		
 		}
+		double gst=subtotal*0.01;
 		List<Category> lc=(List<Category>)cdao.getAllCategories();
-		mv.addObject("tp", totalprice);
+		mv.addObject("sb", subtotal);
 		mv.addObject("catd", lc);
+		mv.addObject("gst", gst);
 		
-		return mv;
-	}
-	@RequestMapping("/cart")
-	public ModelAndView car()
-	{
-		ModelAndView mv=new ModelAndView("redirect:/user/cart");
 		return mv;
 	}
 	
@@ -98,15 +99,7 @@ public class CartController {
 		
 		return mv;
 		
-		    /*Product p=new Product();
-		p=pdao.getprobyid(pid);
-		List<Category> c=(List<Category>)cdao.getAllCategories();
-		
-		ModelAndView mv =new ModelAndView("Cart");
-		mv.addObject("listoc", c);
-		mv.addObject("q", qty);
-		mv.addObject("pd", p);
-		return mv;*/
+		  
 	}
 	@RequestMapping("/user/deletecart")
 	public ModelAndView cartdel(@RequestParam("caid")int caid)
@@ -117,18 +110,41 @@ public class CartController {
 	
 		return mv;
 	}
-	@RequestMapping("user/cs")
+	@RequestMapping("/user/cs")
 	public ModelAndView cspg()
 	{
 		ModelAndView mv=new ModelAndView("ProductCatalogue");
 		return mv;
 	}
 	
-	@RequestMapping("order")
-	public ModelAndView odr()
+	
+	@RequestMapping(value="/user/placeorder",method=RequestMethod.POST)
+	public ModelAndView placeord(@RequestParam("name")String name,@RequestParam("housename")String hname,@RequestParam("streetname")String sname,@RequestParam("postcode")int pcode,@RequestParam("email")String email,@RequestParam("phoneno")long pno)
+	{
+		System.out.println();
+		Order o=new Order();
+		o.setSname(sname);
+		o.setHname(hname);
+		o.setEmail(email);
+		o.setMobno(pno);
+		o.setPin(pcode);
+		o.setName(name);
+		orddao.saveOrder(o);
+		ModelAndView mv=new ModelAndView("Payment");
+		
+		return mv;
+	}
+	@RequestMapping("/user/checkout")
+	public ModelAndView ckot(@RequestParam("tp")double tp)
 	{
 		ModelAndView mv=new ModelAndView("Order");
+		mv.addObject("tp", tp);
 		return mv;
-		
+	}
+	@RequestMapping("/user/thanku")
+	public ModelAndView tku()
+	{
+		ModelAndView mv=new ModelAndView("Thankyou");
+		return mv;
 	}
 }
