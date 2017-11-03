@@ -1,6 +1,7 @@
 package com.niit.EcommerceBackend.daoimpl;
 
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -28,6 +29,20 @@ public class OrderDaoImpl implements OrderDao{
 		
 		
 	}
+
+	public Order getorderbyusername(String username) {
+		// TODO Auto-generated method stub
+		Session ssn=sessionFactory.openSession();
+		Transaction t=ssn.getTransaction();
+		t.begin();
+		Query q=ssn.createQuery("from Order where email='"+username+"'");
+		int size=q.list().size();
+		Order or=(Order)q.list().get(size-1);
+		t.commit();
+		ssn.close();
+		return or;
+		 
+		}
 
 
 }

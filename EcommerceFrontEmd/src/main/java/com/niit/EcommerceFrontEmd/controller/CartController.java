@@ -36,7 +36,7 @@ public class CartController {
 	@Autowired
 	OrderDao orddao;
 	
-	@RequestMapping(value="/user/cart")
+	@RequestMapping("/user/cart")
 	public ModelAndView cart()
 	{
 		String usrname=SecurityContextHolder.getContext().getAuthentication().getName();
@@ -61,8 +61,15 @@ public class CartController {
 		return mv;
 	}
 	
-	@RequestMapping(value="/user/addcart",method=RequestMethod.POST)
-	public ModelAndView addcar(@RequestParam("qty")int qty,@RequestParam("pid")int pid)
+	@RequestMapping("/cart")
+	public ModelAndView car()
+	{
+		ModelAndView mv=new ModelAndView("redirect:/user/cart");
+		return mv;
+	}
+	
+	@RequestMapping(value="/addcart",method=RequestMethod.POST)
+	public ModelAndView addcar(@RequestParam("pid")int pid)
 	{
 		String usrname=SecurityContextHolder.getContext().getAuthentication().getName();
 		Cart cart=new Cart();
@@ -87,13 +94,17 @@ public class CartController {
 		else
 		{
 			cart.setUname(usrname);
-			cart.setQty(qty);
+			cart.setQty(1);
 			Product p=new Product();
 			p=cartdao.getprobyid(pid);
 			cart.setPrice(p.getPrice());
 			cart.setPid(p);
 			cartdao.addToCart(cart);
+			
 		}
+		Product p=pdao.getprobyid(pid);
+		p.setStock(p.getStock()-1);
+		pdao.updateProduct(p);
 		ModelAndView mv=new ModelAndView("redirect:/user/cart");
 		
 		
@@ -101,27 +112,56 @@ public class CartController {
 		
 		  
 	}
+	@RequestMapping("/user/edit")
+	public ModelAndView cartup(@RequestParam("cartid")int cartid)
+	{
+		ModelAndView mv=new ModelAndView("CartUpdate");
+		List<Category> l=cdao.getAllCategories();
+		mv.addObject("catd",l);
+		Cart c=new Cart();
+		c=cartdao.getCartById(cartid);
+		mv.addObject("ca",c);
+		return mv;
+		
+	}
+	@RequestMapping("/user/updatecart")
+	public ModelAndView cart(@RequestParam("id") int cartid, @RequestParam("quantity") int quantity) {
+		ModelAndView mv1 = new ModelAndView("redirect:/user/cart");
+		List<Category> l=(List<Category>)cdao.getAllCategories();
+		mv1.addObject("catd",l);
+		
+		Cart c=cartdao.getCartById(cartid);
+		Product p=pdao.getprobyid(c.getPid().getId());
+		p.setStock(p.getStock()-(quantity-c.getQty()));
+		pdao.updateProduct(p);
+		
+		Cart cc= new Cart();
+		String Username=SecurityContextHolder.getContext().getAuthentication().getName();
+		cc.setUname(Username);
+		cc.setQty(quantity);
+		cartdao.updateQuantity(cartid,quantity);
+		return mv1;
+		
+	}
 	@RequestMapping("/user/deletecart")
 	public ModelAndView cartdel(@RequestParam("caid")int caid)
 	{
+		Cart c=cartdao.getCartById(caid);
+		Product p=pdao.getprobyid(c.getPid().getId());
+		p.setStock(p.getStock()+(c.getQty()));
+		pdao.updateProduct(p);
 		cartdao.deleteCart(caid);
 		ModelAndView mv=new ModelAndView("redirect:/user/cart");
-		
+		return mv;
+	}
 	
-		return mv;
-	}
-	@RequestMapping("/user/cs")
-	public ModelAndView cspg()
-	{
-		ModelAndView mv=new ModelAndView("ProductCatalogue");
-		return mv;
-	}
 	
 	
 	@RequestMapping(value="/user/placeorder",method=RequestMethod.POST)
-	public ModelAndView placeord(@RequestParam("name")String name,@RequestParam("housename")String hname,@RequestParam("streetname")String sname,@RequestParam("postcode")int pcode,@RequestParam("email")String email,@RequestParam("phoneno")long pno)
+	public ModelAndView placeord(@RequestParam("name")String name,@RequestParam("housename")String hname,@RequestParam("streetname")String sname,@RequestParam("postcode")int pcode,@RequestParam("phoneno")long pno)
 	{
-		System.out.println();
+		org.springframework.security.core.Authentication authent=SecurityContextHolder.getContext().getAuthentication();
+		String email=authent.getName();
 		Order o=new Order();
 		o.setSname(sname);
 		o.setHname(hname);
@@ -131,6 +171,8 @@ public class CartController {
 		o.setName(name);
 		orddao.saveOrder(o);
 		ModelAndView mv=new ModelAndView("Payment");
+		List<Category> l=(List<Category>)cdao.getAllCategories();
+		mv.addObject("catd", l);
 		
 		return mv;
 	}
@@ -139,12 +181,23 @@ public class CartController {
 	{
 		ModelAndView mv=new ModelAndView("Order");
 		mv.addObject("tp", tp);
+		List<Category> l= (List<Category>)cdao.getAllCategories();
+		mv.addObject("catd",l);
 		return mv;
 	}
 	@RequestMapping("/user/thanku")
 	public ModelAndView tku()
 	{
 		ModelAndView mv=new ModelAndView("Thankyou");
+		org.springframework.security.core.Authentication authent=SecurityContextHolder.getContext().getAuthentication();
+		String email=authent.getName();
+		Order or=orddao.getorderbyusername(email);
+		mv.addObject("bill",or);
+		cartdao.deletecartbyuser(email);
+		List<Category> l=(List<Category>)cdao.getAllCategories();
+
+		mv.addObject("catd", l);
 		return mv;
 	}
+	
 }

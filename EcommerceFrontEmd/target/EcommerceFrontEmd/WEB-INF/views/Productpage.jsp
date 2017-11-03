@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Product Page</title>
 
 </head><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -18,9 +18,8 @@
 <div class="row">
 
 	<div class="col-md-6">
-	<img src="resources/DatabaseImages/${probyid.image}" alt="" class="image-responsive"/>
-
-</div>
+	<img src="resources/DatabaseImages/${probyid.image}" class="img-responsive" style="width:450px ;height:450px"alt="" class="image-responsive"/>
+	</div>
 
 <div class="col-md-6">
 	
@@ -44,7 +43,7 @@
 
 	<div class="row">
 	<div class="col-md-12">
-	
+	<h4>Stock ${probyid.stock}</h4>
 	</div>
 	</div>
 	
@@ -55,25 +54,23 @@
     <div class="form-group">
 	
 	<c:if test ="${pageContext.request.userPrincipal.name!=null}"> 
-	<label>Quantity</label>
-	<form action="user/addcart" method="post">
-	<input type="number" name="qty" required>
+	
+	<form action="addcart" method="post">
 	<input type="hidden" name="pid" value="${probyid.id}"/>
 	<button type="submit" class="btn btn-lg btn-brand btn-full-width">
     Add to Cart
     </button>
-  	<button class="btn btn-lg btn-brand btn-full-width" class="btn btn-lg btn-brand btn-full-width">
-    Buy Now
-    </button>
+  	
    	</form>
   	</c:if>
    	</div>
 	</div>
 	</div>
 	
-</div><!-- end row -->
+
 </div>
 </div>
 </div>
+<jsp:include page="Footer.jsp"/>
 </body>
 </html>

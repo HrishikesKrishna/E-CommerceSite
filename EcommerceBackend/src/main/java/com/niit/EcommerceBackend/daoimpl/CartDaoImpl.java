@@ -74,15 +74,7 @@ public class CartDaoImpl implements CartDao{
 		
 	}
 
-	public void updateCart(Cart id) {
-		// TODO Auto-generated method stub
-		Session ssn=sessionFactory.openSession();
-		Transaction t=ssn.getTransaction();
-		t.begin();
-		ssn.update(id);
-		t.commit();
-		ssn.close();
-	}
+	
 
 	public void deleteCart(int id) {
 		// TODO Auto-generated method stub pass id as cart object
@@ -105,6 +97,16 @@ public class CartDaoImpl implements CartDao{
 		t.commit();
 		ssn.close();
 		
+	}
+
+	public void deletecartbyuser(String name) {
+		// TODO Auto-generated method stub
+		Session ssn=sessionFactory.openSession();
+		
+		Query q=ssn.createQuery("delete Cart where USERNAME= '"+name+"'");
+		int result=q.executeUpdate();
+		ssn.flush();
+		ssn.close();
 	}
 	
 

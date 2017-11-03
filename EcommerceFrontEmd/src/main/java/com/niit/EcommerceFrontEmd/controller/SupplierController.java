@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -29,11 +30,12 @@ public class SupplierController {
 		ModelAndView mv1= new ModelAndView("Admin");
 		return mv1;
 	}
+
 	@RequestMapping("/admin/lists")
 	public ModelAndView ls(){
 		ModelAndView mv=new ModelAndView("SupplierList");
         List<Supplier> s=(List<Supplier>)sdao.getAllSupplier();
-        mv.addObject("listos" , s);
+        mv.addObject("listos",s);
         return mv;
 	
 	}
@@ -46,11 +48,13 @@ public class SupplierController {
 		mv.addObject("sup", s);
 		return mv;
 	}
-	@RequestMapping("/admin/updatesup")
-	public ModelAndView usp(@RequestParam("name")String name)
+	@RequestMapping(value="/admin/updatesup",method=RequestMethod.POST)
+	public ModelAndView usp(@RequestParam("id")int id,@RequestParam("name")String name,@RequestParam("address")String address)
 	{
 		Supplier s=new Supplier();
+		s.setId(id);
 		s.setSupname(name);
+		s.setSadr(address);
 		sdao.updateSupplier(s);
 		ModelAndView mv=new ModelAndView("SupplierList");
 		return mv;

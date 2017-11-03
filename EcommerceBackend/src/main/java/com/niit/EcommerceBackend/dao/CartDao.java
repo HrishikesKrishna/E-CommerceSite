@@ -10,9 +10,9 @@ public interface CartDao  {
 	public void addToCart(Cart c);
 	public List<Cart> getCartByUser(String username);
 	public Cart getCartById(int id);
-	public void updateCart(Cart id);
+	//public void updateCart(Cart c);
 	public void deleteCart(int id);
 	public void updateQuantity(int cartid,int qty);
-	
+	public void deletecartbyuser(String name);
 	
 }

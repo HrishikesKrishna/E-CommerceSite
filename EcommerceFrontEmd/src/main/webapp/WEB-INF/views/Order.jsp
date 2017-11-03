@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>HK's Project</title>
+<title>Order</title>
 <style>
 h2.bg-success{
     padding: 15px;
@@ -45,12 +45,11 @@ label{
 <body>
 <jsp:include page="Header.jsp"/>
 <div class="container">
+<div class="jumbotron">
 	<div class="row">
-		<img class="spi-header" src="" >
         <hr/>
-        <h1>Fitness Zone</h1>
+        <h3>Shipping Details</h3>
         <hr/>
-        <strong>Order Summary:</strong>
         <h4 class="bg-success">Total Cart Value :Rs ${tp} </h4>
         
         <form action="placeorder" method=POST>
@@ -97,13 +96,8 @@ label{
             <div class="form-group col-md-12 bg-primary">
                 <label class="control-label" for="contactinformation">Contact Information:</label>
             </div>
-            
-            <div class="form-group col-md-6">
-              <span class="required-lbl">* </span><label class="control-label" for="emailaddress">Email Address</label>
-              <div class="controls">
-                <input id="email" name="email" type="email" placeholder="" class="form-control" required="">
-              </div>
-            </div>
+              
+         
             
             <div class="form-group col-md-6">
               <label class="control-label" for="phone">Phone</label>
@@ -129,5 +123,7 @@ label{
         </form>
 	</div>
 </div>
+</div>
+<jsp:include page="Footer.jsp"/>
 </body>
 </html>

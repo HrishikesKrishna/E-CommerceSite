@@ -4,7 +4,7 @@
 		http://www.springframework.org/schema/security 
 		http://www.springframework.org/schema/security/spring-security.xsd"
 		xmlns:security="http://www.springframework.org/schema/security"
-		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans">
+    	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans">
 
 	<!-- New Spring Security implementation -->
 	<security:http auto-config="true">

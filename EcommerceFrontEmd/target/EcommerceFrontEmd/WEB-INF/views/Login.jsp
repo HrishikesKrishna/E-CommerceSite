@@ -5,17 +5,27 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>HK's Project</title>
+<title>Login</title>
+<style>
+input[type=text],input[type=password]{
+	width:100%;
+	padding:12px 20px;
+	margin:8px;
+	display:inline-block;
+	border:1px solid #ccc;
+	box-sizing:border-box;
+}
+</style>
 </head>
 <body>
 <jsp:include page="Header.jsp"/>
 <div class="container-fluid">
 <div class="jumbotron">
-<p><strong>Login</strong></p>
+<p><strong>Please Login</strong></p>
 
 
-<form class="form-horizontal" action="j_spring_security_check"  method="post">
-<h3>Please Login</h3>
+<form  action="j_spring_security_check"  method="post">
+
 
 
 <div class="form-group">
@@ -31,7 +41,7 @@
 </div>
 <div class="form-group">
 
-<button type="submit"class="btn btn-default">Login</button>
+<button type="submit"class="btn btn-primary">Login</button>
 
 </div>
 </form>
@@ -39,7 +49,6 @@
 
 </div>
 </div>
-
-<footer>&copy; NIIT E-Commerce Case Study Project 2017</footer>
+<jsp:include page="Footer.jsp"/>
 </body>
 </html>

@@ -74,12 +74,12 @@ public void deleteSupplier(int id){
 	
 }
 
-public void updateSupplier(Supplier id) {
+public void updateSupplier(Supplier s) {
 	// TODO Auto-generated method stub
 	Session ssn=sessionFactory.openSession();
 	Transaction t=ssn.getTransaction();
 	t.begin();
-	ssn.update(id);
+	ssn.update(s);
 	t.commit();
 	ssn.close();
 	

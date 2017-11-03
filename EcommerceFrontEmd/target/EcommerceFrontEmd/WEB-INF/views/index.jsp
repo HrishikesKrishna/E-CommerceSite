@@ -5,17 +5,18 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>HK's Project</title>
+<title>Fitness Zone Home</title>
 
 </head>
 <body>
-<jsp:include page="Header.jsp"/>
 
 
 
+<jsp:include page="Header.jsp"/> 
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
+
   <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
     <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -52,9 +53,10 @@
     <span class="glyphicon glyphicon-chevron-right"></span>
     <span class="sr-only">Next</span>
   </a>
+<br>
+<br>
 
-
-<footer style="margin-top:100 px"> &copy; NIIT E-Commerce Case Study Project 2017</footer>
+<jsp:include page="Footer.jsp"/>
 
 </body>
 </html>

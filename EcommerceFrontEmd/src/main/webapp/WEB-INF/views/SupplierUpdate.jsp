@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Supplier Update</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -17,9 +17,28 @@
 <body>
 <jsp:include page="Header.jsp"/>
 <div class="container">
-<form class="form-horizontal"action="updatesup" method="post">
-<label><b>Name</b></label>
-  <input type="text" placeholder="Enter Supplier name"name="name"required >
-    <button type="submit"class="btn btn-default" >Submit</button>
+<form action="updatesup" method="post">
+<table>
+<tr><td><input type="hidden"  name="id" value="${sup.id}"></td></tr>
+<tr><td>Supplier Name:</td><td><input type="text" name="name" value="${sup.supname}"></td></tr>
+<tr><td>Supplier Address:</td><td><input type="text" name="address" value="${sup.sadr}"></td></tr>
+<tr><td><input type="submit"value="Submit form"></td></tr>
+</table>
+</form>	
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<jsp:include page="Footer.jsp"/>
 </body>
 </html>

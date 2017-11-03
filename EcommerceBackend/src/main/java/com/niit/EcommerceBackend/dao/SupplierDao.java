@@ -13,5 +13,5 @@ void saveSupplier(Supplier s);
 public Supplier getsupbyid(int id);//why is return type supplier
 public ArrayList<Supplier>getAllSupplier();
 public void deleteSupplier(int id);
-public void updateSupplier(Supplier id);
+public void updateSupplier(Supplier s);
 }

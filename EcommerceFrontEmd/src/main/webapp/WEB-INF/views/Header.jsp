@@ -8,7 +8,7 @@
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Header</title>
 <style>
 button {
     background-color: #4c6baf;
@@ -26,32 +26,30 @@ button {
 <body>
 <nav class="navbar navbar-inverse navbar">
   <div class="container-fluid">
- 
-     
-   
-   
-    <ul class="nav navbar-nav">
-      <li><a href="./">Home</a></li>
-   
+ 	<div class="navbar-left"> 
+     <a class="navbar-brand" href="./">FITNESS ZONE</a>
+   	</div>	 
+   	<ul class="nav navbar-nav">
+   		 <c:if test="${pageContext.request.userPrincipal.name  == 'hrishikeskrishna@rediffmail.com'}">
+      <li><a href="ad">Admin</a></li>
+       </c:if> 
       
         <c:if test="${pageContext.request.userPrincipal.name  !='hrishikeskrishna@rediffmail.com'}">
       <li class="dropdown">
-    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" >Search Category
-    <span class="caret"></span></button>
+    <a class=" dropdown-toggle"  data-toggle="dropdown" >Search Category<span class="caret"></span></a>
+    
     <ul class="dropdown-menu">
     <c:forEach var="category" items="${catd}">
       <li><a href="selectcat?cid=${category.id}">${category.catname}</a></li>
      </c:forEach>
      </ul>
+    </li>
        </c:if>
-        <c:if test="${pageContext.request.userPrincipal.name  == 'hrishikeskrishna@rediffmail.com'}">
-      <li><a href="ad">Admin</a></li>
-       </c:if> 
-  </ul>
+     </ul>
  
     <ul class="nav navbar-nav navbar-right">
     <c:if test="${pageContext.request.userPrincipal.name != null && pageContext.request.userPrincipal.name != 'hrishikeskrishna@rediffmail.com'}">
-    <li><a href="user/cart">Cart</a></li>
+    <li><a href="cart">Cart</a></li>
    	</c:if>
    	<c:if test="${pageContext.request.userPrincipal.name == null}">
     <li><a href="login">Login</a></li>

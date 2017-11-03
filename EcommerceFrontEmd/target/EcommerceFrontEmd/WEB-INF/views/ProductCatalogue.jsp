@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>Insert title here</title>
+<title>Product Catalogue</title>
 <style>
 
 
@@ -146,30 +146,30 @@ a.text-warning:hover {
     
     <div class="row">
     <c:forEach items="${lpcd}" var="productl" >
-   
+   <div>
     <div class="col-md-4 col-sm-4">
                 <div class="store-item">
                     
                     <div class="store-item-image">
                         <a href="productpage?pid=${productl.id}">
-                            <img src="${pageContext.request.contextPath}/resources/DatabaseImages/${productl.image}" alt="" class="img-responsive">
+                            <img src="${pageContext.request.contextPath}/resources/DatabaseImages/${productl.image}" alt="" class="img-responsive" style="width:300px ;height:300px" >
                         </a>
                     </div>
                     <div class="store-item-info clearfix">
-                        <span class="store-item-price themed-color-dark pull-right">${productl.price}</span>
+                        <span class="store-item-price themed-color-dark pull-right">Rs ${productl.price}</span>
                         <a href="productpage?pid=${productl.id}"><strong>${productl.name}</strong></a><br>
                         <small><i class="fa fa-shopping-cart text-muted"></i>
-                        <a href="" class="text-muted">Add to Cart</a></small> <!-- a href for going to corrsponding product page give in out of div to enable to entire ox instead of seperate elements like photo and name -->
+                        
                     </div>
                 </div>
             </div> 
-         
+         </div>
             </c:forEach>
             </div>
            
             </div>
             
-
+<jsp:include page="Footer.jsp"/>
 
 </body>
 </html>

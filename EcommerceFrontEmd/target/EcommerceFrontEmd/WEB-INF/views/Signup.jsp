@@ -20,29 +20,6 @@ input[type=text], input[type=password] {
     box-sizing: border-box;
 }
 
-/* Set a style for all buttons */
-button {
-    background-color: #4c6baf;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-}
-
-/* Extra styles for the cancel button */
-.cancelbtn {
-    padding: 14px 20px;
-    background-color: #4c6baf;
-}
-
-/* Float cancel and signup buttons and add an equal width */
-.cancelbtn,.signupbtn {
-    float: left;
-    width: 50%;
-}
-
 /* Add padding to container elements */
 .container {
     padding: 16px;
@@ -57,7 +34,7 @@ button {
 
 /* Change styles for cancel button and signup button on extra small screens */
 @media screen and (max-width: 300px) {
-    .cancelbtn, .signupbtn {
+     .signupbtn {
         width: 100%;
     }
 }
@@ -67,8 +44,11 @@ button {
 </head>
 <body>
 <jsp:include page="Header.jsp"></jsp:include>
+<div class="container-fluid">
+<div class="jumbotron">
+<p><strong>Sign Up</strong></p>
 <form action="register">
-  <div class="container">
+  
   
   	<label><b>Name</b></label>
   	<input type="text" placeholder="Enter Name" name="name" required>
@@ -82,11 +62,12 @@ button {
     
    
     <div class="clearfix">
-      
       <button type="submit" class="btn btn-primary">Sign Up</button>
     </div>
-  </div>
+  
 </form>
-
+</div>
+</div>
+<jsp:include page="Footer.jsp"/>
 </body>
 </html>

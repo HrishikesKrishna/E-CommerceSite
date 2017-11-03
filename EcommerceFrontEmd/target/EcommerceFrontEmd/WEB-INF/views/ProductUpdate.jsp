@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Product Update</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -16,35 +16,77 @@
 <jsp:include page="Header.jsp"/>
 <div class="container">
 
-  <form class="form-horizontal"action="updatepro" method="post"><!-- by default every method is get,dont give get method ,bcs it passes data through url,not secure it is visible in url bar,when refreshed the data i spassed again -->
-   <input type="hidden" value="${pro.id}"name="id">
-  <label><b>Name</b></label>
-  <input type="text" value="${pro.name}"name="name"required >
+  <form class="form-horizontal"action="updatepro" method="post"  method="post"enctype="multipart/form-data"><!-- by default every method is get,dont give get method ,bcs it passes data through url,not secure it is visible in url bar,when refreshed the data i spassed again -->
   
-  <label for="inputName">Category</label>
-  	<select name="cat">
-  	<option value="volvo">Select Category</option>
-  	<c:forEach var="c" items="${catlist}"><!--while retrieving from controller to jsp page use dollar sign  -->
-  	<option value="${c.id}">${c.catname}
-  	</option>
-  	</c:forEach>
-  </select>
-  	<label for="inputName">Supplier</label>
-  	<select name="sup">
-  	<option value="volvo">Select Supplier</option>
-  	<c:forEach var="s" items="${suplist}"> 
-  	<option value="${s.id}">${s.supname}</option>
-   	</c:forEach> 
-   </select>
-   
-   <label><b>Short Description</b></label>
-  <input type="text" value="${pro.sd} "name="stds"required>
-  <label><b>Price</b></label>
-  <input type="text" value="${pro.price}" name="price"required>
-  <button type="submit"class="btn btn-default" >Submit</button>
-  </form>  
+  <div class="form-group">
+  	<input type="hidden" value="${pro.id}"name="id">
+  	<label class="control-label col-sm-2"><b>Name</b></label>
+  	<div class="col-sm-10">
+  		<input type="text" value="${pro.name}"name="name"required >
+  	</div>
   </div>
   
-
-</body>
+  <div class="form-group">
+ 	<label class="control-label col-sm-2" for="Stock">Stock</label>
+  	<div class="col-sm-10">
+  		<input type="text" value="${pro.stock}" name="stock" required>
+  	</div>
+  </div>
+  
+  <div class="form-group">
+  	<label class="control-label col-sm-2" for="inputName">Category</label>
+  	<div class="col-sm-10">
+  	  	<select name="cat">
+  		<option value="${pro.cid.id}">${pro.cid.catname}</option>
+  		<c:forEach var="c" items="${catlist}"><!--while retrieving from controller to jsp page use dollar sign  -->
+  		<option value="${c.id}">${c.catname}
+  		</option>
+  		</c:forEach>
+  		</select>
+  	</div>
+  </div>
+  
+  <div class="form-group">
+  	<label class="control-label col-sm-2" for="inputName">Supplier</label>
+  	<div class="col-sm-10">
+  		<select name="sup">
+  		<option value="${pro.sid.id}">${pro.sid.supname}</option>
+  		<c:forEach var="s" items="${suplist}"> 
+  		<option value="${s.id}">${s.supname}</option>
+   		</c:forEach> 
+    	</select>
+  	</div> 
+  </div>
+   
+  <div class="form-group">  
+	<label class="control-label col-sm-2"><b>Image</b></label>
+	<div class="col-sm-10">
+   <input type="file" name="img"/>
+   </div>
+   </div>
+   
+  <div class="form-group"> 
+  	<label class="control-label col-sm-2"><b>Short Description</b></label>
+  	<div class="col-sm-10">
+  	 	<input type="text" value="${pro.sd}" name="stds"required>
+  	</div>
+  </div>
+ 
+  <div class="form-group">
+  	<label class="control-label col-sm-2"><b>Price</b></label>
+  	<div class="col-sm-10">
+  		<input type="text" value="${pro.price}" name="price"required>
+  	</div>
+  </div>
+  
+  <div class="form-group">
+	<div class="col-sm-2 col-sm-offset-2">  
+  		<button type="submit"class="btn btn-primary" >Submit</button>
+  	</div>
+  </div>
+  </form>  
+  
+  </div>
+ <jsp:include page="Footer.jsp"/>
+ </body>
 </html>

@@ -56,7 +56,7 @@ import com.niit.EcommerceBackend.models.User;
 		@RequestMapping("/user")
 		public ModelAndView Homi()
 				{
-					ModelAndView mv=new ModelAndView("index");
+					ModelAndView mv=new ModelAndView("redirect:/");
 					List<Category> cd=(List<Category>)cdao.getAllCategories();
 					mv.addObject("catd", cd);
 					return mv;

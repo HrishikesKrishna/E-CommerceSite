@@ -32,7 +32,7 @@ public class Category implements Serializable {
 private String catname;
 
 
-@OneToMany(targetEntity=Product.class,mappedBy="cid",fetch=FetchType.EAGER)
+@OneToMany(targetEntity=Product.class,mappedBy="cid",fetch=FetchType.LAZY)
 private Set<Product> product;
 
 

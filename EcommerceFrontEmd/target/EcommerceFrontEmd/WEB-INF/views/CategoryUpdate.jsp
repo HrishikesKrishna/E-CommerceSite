@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Category Update</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -17,11 +17,24 @@
 
 <form action="updatecat">
 <table>
-<tr><td>CategoryID:</td><td><input type="text"  name="id" value="${cat.id}"></td></tr>
+<tr><td><input type="hidden"  name="id" value="${cat.id}"></td></tr>
 <tr><td>Category Name:</td><td><input type="text" name="name" value="${cat.catname}"></td></tr>
 <tr><td><input type="submit"value="Submit form"></td></tr>
 </table>
 </form>	
-	
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+	<jsp:include page="Footer.jsp"/>
 </body>
 </html>

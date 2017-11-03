@@ -32,7 +32,8 @@ public class ProductContoller {
 	CategoryDao cdao;
 	
 	@RequestMapping("/admin/addp")
-	public ModelAndView pro(@RequestParam("name")String Productname,@RequestParam("stds")String shortdescription,@RequestParam("price") int price,@RequestParam("cat") int ci,@RequestParam("sup") int ss,@RequestParam("img") MultipartFile file )
+	public ModelAndView pro(@RequestParam("name")String Productname,@RequestParam("stds")String shortdescription,@RequestParam("price") int price,@RequestParam("cat") int ci,@RequestParam("sup") int ss,@RequestParam("img") MultipartFile file,@RequestParam("stock")int stock )
+	
 	{
 		System.out.println("Controller");
 		System.out.println(Productname+shortdescription+price);
@@ -40,6 +41,7 @@ public class ProductContoller {
 		p.setName(Productname);
 		p.setSd(shortdescription);
 		p.setPrice(price);
+		p.setStock(stock);
 		String img=file.getOriginalFilename();
 		p.setImage(img);
 		Category ca=new Category();	
@@ -64,19 +66,22 @@ public class ProductContoller {
 		pdao.saveProduct(p);
 		
 		ModelAndView mv1=new ModelAndView("Admin");
-		/*ArrayList<Category> cat=(ArrayList<Category>)cdao.getAllCategories();
-		mv1.addObject("cat",cat);*/
+		
 		return mv1;
 		
 	}
 	
 	
 	@RequestMapping("/admin/listp")
-	public ModelAndView lp(){
+	public ModelAndView lp(@RequestParam("stat")String s){
 		ModelAndView mv=new ModelAndView("ProductList");
 		List<Product> p=(List<Product>)pdao.getAllProducts();
         mv.addObject("listop", p);
-      
+       if(s == " ") {
+    	   mv.addObject("mes"," ");
+       }else {
+    	   mv.addObject("mes",s);
+       }
         return mv;
 	}
 	
@@ -87,7 +92,6 @@ public class ProductContoller {
 		List<Category> c =(List<Category>)cdao.getAllCategories();
 		List<Supplier> s =(List<Supplier>)sdao.getAllSupplier();
 		ModelAndView mv=new ModelAndView("ProductUpdate");
-		System.out.println("Id of product............ "+pid);
 		mv.addObject("catlist", c);
 		mv.addObject("suplist", s);
 		Product p=new Product();
@@ -98,12 +102,27 @@ public class ProductContoller {
 		
 	}
 	@RequestMapping("/admin/updatepro")
-	public ModelAndView upr(@RequestParam("id")int id,@RequestParam("name")String name,@RequestParam("cat")int cat,@RequestParam("sup")int sup,@RequestParam("stds")String stds,@RequestParam("price")int price){
+	public ModelAndView upr(@RequestParam("id")int id,@RequestParam("name")String name,@RequestParam("cat")int cat,@RequestParam("sup")int sup,@RequestParam("stds")String stds,@RequestParam("price")int price,@RequestParam("stock")int stock,@RequestParam("img")MultipartFile file){
 		Product p=new Product();
 		p.setId(id);
 		p.setName(name);
 		p.setSd(stds);
 		p.setPrice(price);
+		p.setStock(stock);
+		if(file.getOriginalFilename()!="")
+		{
+			String img=file.getOriginalFilename();
+			p.setImage(img);
+		}
+		String filepath ="C:/Users/USER/workspace/EcommerceFrontEmd/src/main/webapp/resources/DatabaseImages/" + file.getOriginalFilename();//to get image name
+		 try {
+				byte imagebyte[] = file.getBytes();
+				BufferedOutputStream fos = new BufferedOutputStream(new FileOutputStream(filepath));
+				fos.write(imagebyte);
+				fos.close();
+				} catch (IOException e) {
+				e.printStackTrace();
+				}
 		
 		Category cy=new Category();
 		cy=cdao.getcatbyid(cat);
@@ -115,17 +134,24 @@ public class ProductContoller {
 		p.setSid(sp);
 		pdao.updateProduct(p);
 		
-		ModelAndView mv=new ModelAndView("ProductList");
-		List<Product> pl=(List<Product>)pdao.getAllProducts();
-        mv.addObject("listop", pl);
+		ModelAndView mv=new ModelAndView("redirect:/admin");
+		
 		return mv;
 	}
 	@RequestMapping("/admin/deletep")
-	public ModelAndView dp(@RequestParam("pid")int pid)
+	public String dp(@RequestParam("pid")int pid)
 	{
-		ModelAndView mv=new  ModelAndView("ProductList");
-		pdao.deleteProduct(pid);
-		return mv;
+		
+		String m="";
+		try {
+			pdao.deleteProduct(pid);
+			
+		}
+		catch(Exception e) {
+			m="Product in use,Cannot Delete!";
+		}
+		
+		return "redirect:/admin/listp?stat="+m;
 	}
 	@RequestMapping("/productpage")
 	public ModelAndView pdp(@RequestParam("pid")int pid)

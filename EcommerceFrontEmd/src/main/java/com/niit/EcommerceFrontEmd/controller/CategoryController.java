@@ -25,8 +25,6 @@ public class CategoryController {
 	
 	@RequestMapping("/admin/addc")
 	public ModelAndView cat(@RequestParam("Catname") String catname) {
-		System.out.println("Controller");
-		System.out.println(catname);
 		Category c=new Category();
 		c.setCatname(catname);
 		cdao.saveCategory(c);

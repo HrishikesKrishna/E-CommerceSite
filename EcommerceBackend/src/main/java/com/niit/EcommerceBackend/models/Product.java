@@ -45,7 +45,8 @@ public class Product implements Serializable {
 	@Column(name="Image")
 	private String image;
 
-	
+	@Column(name="Stock")
+	private int stock;
 	
 	@ManyToOne
 	@JoinColumn(name="S_ID",insertable=true,updatable=true,nullable=false)
@@ -117,6 +118,14 @@ public class Product implements Serializable {
 
 	public Category getCid() {
 		return cid;
+	}
+
+	public int getStock() {
+		return stock;
+	}
+
+	public void setStock(int stock) {
+		this.stock = stock;
 	}
 
 	public void setCid(Category cid) {

@@ -7,14 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	<center>
-		<h2>Hello World</h2>
-		<h2>
-			${message} ${name}
-		</h2>
-	</center>
-
-
+<h6>Site created and maintained by Hrishikes</h6>
 </body>
 </html>

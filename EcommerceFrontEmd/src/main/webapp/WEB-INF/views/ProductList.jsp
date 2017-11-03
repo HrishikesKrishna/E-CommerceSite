@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Product List</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -14,6 +14,7 @@
 <jsp:include page="Header.jsp"/>
 <div class="container">
 
+<h2>${mes}</h2>
 <table class="table">
 <thead>
 	<tr>
@@ -24,6 +25,7 @@
 	<th>Action</th>
 	</tr>
 </thead>
+
 
 <c:forEach var="product" items="${listop}">
 <tbody>
@@ -40,5 +42,23 @@
 </c:forEach>	
 </table>
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<jsp:include page="Footer.jsp"/>
 </body>
+
 </html>
